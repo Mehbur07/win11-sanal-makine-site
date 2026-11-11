@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sayfa bulunamadı — Win11 Web</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='8.5' y='1' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='1' y='8.5' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='8.5' y='8.5' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3C/svg%3E">
+  <!--
+    404 sayfası: GitHub Pages, sitede olmayan bir adrese gidildiğinde bunu gösterir.
+    Sayfa her derinlikte (ör. /win11-sanal-makine-site/a/b/c) açılabileceği için
+    tüm bağlantılar tam yol (/win11-sanal-makine-site/...) olarak yazıldı.
+    Yapı mehpix.github.io'daki 404 sayfasından uyarlandı: büyük parlayan "404",
+    başlık, açıklama, ana düğme, öneri düğmeleri ve ızgara arka plan.
+  -->
+  <style>
+    :root {
+      --accent: #4cc2ff;
+      --accent-text: #000;
+      --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+      --mono: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+      --wallpaper: radial-gradient(ellipse 60% 50% at 50% 62%, #bfe3ff 0%, rgba(96,165,250,.6) 30%, transparent 70%), radial-gradient(ellipse at 25% 110%, #0a3d91 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, #2563eb 0%, transparent 45%), linear-gradient(160deg, #081a45, #1e3a8a 50%, #0a1d50);
+    }
+    :root[data-theme="dark"] {
+      --surface: rgba(32, 32, 32, .86); --title-bg: rgba(28, 28, 28, .9);
+      --text: #fff; --text2: #cfcfcf; --muted: #9a9a9a;
+      --border: rgba(255, 255, 255, .1); --hover: rgba(255, 255, 255, .08); --input: rgba(255, 255, 255, .06);
+      --bar: rgba(32, 32, 32, .8); --shadow: 0 24px 64px rgba(0, 0, 0, .55);
+      color-scheme: dark;
+    }
+    :root[data-theme="light"] {
+      --surface: rgba(249, 249, 249, .88); --title-bg: rgba(238, 238, 238, .9);
+      --text: #1a1a1a; --text2: #444; --muted: #6b6b6b;
+      --border: rgba(0, 0, 0, .1); --hover: rgba(0, 0, 0, .05); --input: #fff;
+      --bar: rgba(243, 243, 243, .85); --shadow: 0 24px 64px rgba(0, 0, 0, .25);
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      min-height: 100dvh; display: flex; flex-direction: column;
+      font-family: var(--font); color: var(--text);
+      background-color: #0a1d50;
+      background-image: var(--wallpaper);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+
+    /* Izgara: ortada belirgin, kenarlara doğru kaybolur */
+    .grid {
+      position: fixed; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, .09) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, .09) 1px, transparent 1px);
+      background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+      mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    }
+
+    main { position: relative; flex: 1; display: grid; place-items: center; padding: 32px 16px 80px; }
+
+    /* Windows hata penceresi */
+    .win {
+      width: min(560px, 100%);
+      background: var(--surface);
+      -webkit-backdrop-filter: blur(30px) saturate(1.5); backdrop-filter: blur(30px) saturate(1.5);
+      border: 1px solid var(--border); border-radius: 10px; box-shadow: var(--shadow);
+      overflow: hidden; animation: pop .35s cubic-bezier(.2, .9, .3, 1.2);
+    }
+    @keyframes pop { from { opacity: 0; transform: scale(.92) translateY(12px); } }
+    .titlebar { display: flex; align-items: center; height: 36px; background: var(--title-bg); font-size: 12px; user-select: none; }
+    .titlebar .ico { margin: 0 8px 0 12px; }
+    .titlebar .t { flex: 1; color: var(--text2); }
+    .titlebar a { width: 46px; height: 100%; display: grid; place-items: center; text-decoration: none; color: var(--text2); }
+    .titlebar a:hover { background: #c42b1c; color: #fff; }
+
+    .content { padding: 28px 28px 30px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .code {
+      font-family: var(--mono); font-weight: 700; font-size: clamp(64px, 18vw, 104px); line-height: 1;
+      color: var(--accent); letter-spacing: 2px; margin: 4px 0 2px;
+      text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 70%, transparent), 0 0 26px color-mix(in srgb, var(--accent) 45%, transparent);
+      animation: flicker 4s infinite;
+    }
+    @keyframes flicker { 0%, 92%, 100% { opacity: 1; } 93% { opacity: .55; } 94% { opacity: 1; } 96% { opacity: .7; } }
+    h1 { margin: 0; font-size: clamp(22px, 5vw, 28px); font-weight: 600; }
+    .body { margin: 0; color: var(--text2); line-height: 1.55; max-width: 420px; }
+    .path {
+      font-family: var(--mono); font-size: 13px; background: var(--input); border: 1px solid var(--border);
+      border-radius: 6px; padding: 8px 12px; max-width: 100%; overflow-wrap: anywhere; color: var(--text2);
+    }
+    .path b { color: var(--text); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+      padding: 9px 20px; border-radius: 6px; font-size: 14px; border: 1px solid var(--border);
+      background: var(--input); transition: background .15s, filter .15s, transform .1s;
+    }
+    .btn:hover { background: var(--hover); }
+    .btn:active { transform: scale(.97); }
+    .btn.primary { background: var(--accent); color: var(--accent-text); border-color: transparent; font-weight: 600; margin-top: 6px; }
+    .btn.primary:hover { filter: brightness(1.08); }
+    .btn.sm { padding: 6px 14px; font-size: 13px; }
+
+    .suggest { margin-top: 14px; padding-top: 16px; border-top: 1px solid var(--border); width: 100%; }
+    .suggest p { margin: 0 0 10px; font-size: 13px; color: var(--muted); }
+    .suggest ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Alttaki görev çubuğu süsü */
+    .taskbar {
+      position: fixed; left: 0; right: 0; bottom: 0; height: 48px;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+      background: var(--bar); -webkit-backdrop-filter: blur(30px); backdrop-filter: blur(30px);
+      border-top: 1px solid var(--border);
+    }
+    .taskbar a { width: 40px; height: 40px; border-radius: 5px; display: grid; place-items: center; text-decoration: none; font-size: 20px; }
+    .taskbar a:hover { background: var(--hover); }
+    .logo { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: 20px; height: 20px; }
+    .logo i { border-radius: 2px; background: linear-gradient(135deg, #7fdcff, #1f8fff); }
+    .clock { position: absolute; right: 12px; font-size: 12px; text-align: right; line-height: 1.35; }
+
+    @media (prefers-reduced-motion: reduce) { .win, .code { animation: none; } }
+    @media (max-width: 480px) { .content { padding: 22px 18px 24px; } .clock { display: none; } }
+  </style>
+  <script>
+    // Kullanıcının Win11 Web'de seçtiği tema, vurgu rengi ve duvar kâğıdını kullan
+    (function () {
+      var WP = [
+        null,
+        'radial-gradient(circle at 50% 72%, #ffe29a 0%, transparent 18%), radial-gradient(ellipse at 50% 100%, #ff7e5f 0%, transparent 60%), linear-gradient(180deg, #2b1055 0%, #7b2a7a 45%, #ff6a5f 80%, #feb47b 100%)',
+        'radial-gradient(ellipse at 20% 20%, #6ee7b7 0%, transparent 40%), radial-gradient(ellipse at 80% 80%, #065f46 0%, transparent 55%), linear-gradient(135deg, #064e3b, #10b981 60%, #022c22)',
+        'radial-gradient(circle at 75% 25%, #a78bfa 0%, transparent 22%), radial-gradient(ellipse at 20% 90%, #312e81 0%, transparent 60%), linear-gradient(180deg, #020617, #1e1b4b 60%, #0f172a)',
+        'radial-gradient(ellipse at 70% 30%, #fff7ed 0%, transparent 45%), linear-gradient(160deg, #fde68a, #f59e0b 55%, #b45309)',
+        'radial-gradient(ellipse at 30% 30%, #fbcfe8 0%, transparent 45%), radial-gradient(ellipse at 80% 90%, #7c3aed 0%, transparent 50%), linear-gradient(135deg, #f472b6, #a855f7 60%, #4c1d95)'
+      ];
+      var d = document.documentElement, s = null;
+      try { s = JSON.parse(localStorage.getItem('w11:settings')); } catch (e) { /* yoksay */ }
+      if (s && (s.theme === 'light' || s.theme === 'dark')) d.setAttribute('data-theme', s.theme);
+      else if (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) d.setAttribute('data-theme', 'light');
+      if (s && /^#[0-9a-f]{6}$/i.test(s.accent || '')) {
+        var n = parseInt(s.accent.slice(1), 16);
+        var lum = 0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255);
+        d.style.setProperty('--accent', s.accent);
+        d.style.setProperty('--accent-text', lum > 150 ? '#000' : '#fff');
+      }
+      if (s && WP[s.wallpaper]) d.style.setProperty('--wallpaper', WP[s.wallpaper]);
+    })();
+  </script>
+</head>
+<body>
+  <div class="grid" aria-hidden="true"></div>
+
+  <main>
+    <section class="win" role="alertdialog" aria-labelledby="t404" aria-describedby="d404">
+      <div class="titlebar">
+        <span class="ico" aria-hidden="true">📁</span>
+        <span class="t">Dosya Gezgini</span>
+        <a href="/win11-sanal-makine-site/" title="Kapat ve masaüstüne dön" aria-label="Kapat ve masaüstüne dön">✕</a>
+      </div>
+      <div class="content">
+        <p class="code" aria-hidden="true">404</p>
+        <h1 id="t404">Sayfa bulunamadı</h1>
+        <p class="body" id="d404">Windows bu konumu bulamıyor. Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir; adı doğru yazdığınızdan emin olun.</p>
+        <div class="path" id="path"><b>Konum:</b> <span id="where">bilinmiyor</span></div>
+        <a class="btn primary" href="/win11-sanal-makine-site/">🖥️ Masaüstüne dön</a>
+
+        <nav class="suggest" aria-label="Önerilen bağlantılar">
+          <p>Belki bunlara bakmak istersiniz:</p>
+          <ul>
+            <li><a class="btn sm" href="https://github.com/Mehbur07/win11-sanal-makine-site" target="_blank" rel="noopener">💻 Kaynak Kodu</a></li>
+            <li><a class="btn sm" href="https://mehbur07.github.io/projelerim.html">📦 Diğer projeler</a></li>
+            <li><a class="btn sm" href="https://mehbur07.github.io/">🏠 Mehbur07</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <nav class="taskbar" aria-label="Görev çubuğu">
+    <a href="/win11-sanal-makine-site/" title="Win11 Web'i aç" aria-label="Win11 Web'i aç"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span></a>
+    <a href="/win11-sanal-makine-site/" title="Dosya Gezgini" aria-label="Dosya Gezgini">📁</a>
+    <a href="https://github.com/Mehbur07/win11-sanal-makine-site" target="_blank" rel="noopener" title="Kaynak Kodu" aria-label="Kaynak Kodu">💻</a>
+    <div class="clock" id="clock" aria-hidden="true"></div>
+  </nav>
+
+  <script>
+    // Bulunamayan adresi göster (textContent: adres güvenli şekilde yazı olarak eklenir)
+    (function () {
+      var p = location.pathname;
+      try { p = decodeURIComponent(p); } catch (e) { /* bozuk adres: olduğu gibi göster */ }
+      p = p.replace(/^\/win11-sanal-makine-site/, '') || '/';
+      document.getElementById('where').textContent = 'C:\\Win11 Web' + p.replace(/\//g, '\\');
+      var c = document.getElementById('clock');
+      function tick() {
+        var d = new Date();
+        c.innerHTML = '';
+        c.append(d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }), document.createElement('br'), d.toLocaleDateString('tr-TR'));
+      }
+      tick(); setInterval(tick, 15000);
+    })();
+  </script>
+</body>
+</html>

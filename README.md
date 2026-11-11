@@ -63,6 +63,7 @@ python -m http.server 8000   # ardından http://localhost:8000
 |---|---|
 | `index.html` | Sayfa iskeleti: açılış/kilit ekranı, masaüstü, görev çubuğu, paneller |
 | `style.css` | Tüm görünüm ve açık/koyu tema |
+| `404.html` | Bulunamayan adresler için özel hata sayfası (bağımsız, tüm stilleri kendi içinde) |
 | `app.js` | Depolama katmanı, pencere yöneticisi, sanal dosya sistemi ve tüm uygulamalar |
 
 ## Bilinen sınırlamalar
