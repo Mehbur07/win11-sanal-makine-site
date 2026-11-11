@@ -2,6 +2,18 @@
 
 ### [2026-11-11 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - `feature/404-page`: kök dizine bağımsız `404.html` (GitHub Pages proje sitesi için kendi 404'ünü kullanır)
+  - Yapı mehpix.github.io'nun 404'ünden alındı (parlayan büyük 404, başlık, açıklama, ana düğme, öneri düğmeleri, kenarda kaybolan ızgara); görünüm Win11 hata penceresi + görev çubuğu
+  - Tema/vurgu/duvar kâğıdı `w11:settings` localStorage'dan okunuyor; bulunamayan yol `C:\Win11 Web\...` olarak textContent ile gösteriliyor
+  - Sayfa her derinlikte açılabildiği için tüm bağlantılar tam yol (`/win11-sanal-makine-site/`)
+- **Son Commit:** 69c1a6f Merge pull request #1 from Mehbur07/feature/device-folder-storage
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Gerçek cihazlarda (Android Chrome, iPhone Safari) klasör seçme ve kaydetmeyi elle denemek
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - 404.html'deki duvar kâğıdı listesi app.js'deki `WALLPAPERS` ile aynı sırada tutulmalı (yeni duvar kâğıdı eklenirse ikisine de ekle)
+
+### [2026-11-11 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - `feature/device-folder-storage`: localStorage yerine depolama katmanı (`HandleBackend` / `IdbBackend` / `MemoryBackend`, hepsi load-read-write-mkdir-remove arayüzü)
   - Cihaz klasörü: File System Access API ile seçilen konumda `Win11 Web` klasörü; tutamaç (handle) IndexedDB'de, izin gerekirse "Oturum aç" tıklamasında isteniyor
   - Klasör seçilemeyen tarayıcılarda OPFS (yoksa IndexedDB); eski `w11:fs` localStorage verisi ilk açılışta otomatik taşınıyor
