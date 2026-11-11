@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Win11 Web</title>
+  <meta name="description" content="Tarayıcıda çalışan Windows 11 benzeri masaüstü simülasyonu: pencereler, Başlat menüsü, Dosya Gezgini, Not Defteri, Hesap Makinesi, Paint, Terminal ve daha fazlası.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='8.5' y='1' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='1' y='8.5' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='8.5' y='8.5' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Açılış ekranı -->
+  <div id="boot" class="screen">
+    <div class="logo big"><i></i><i></i><i></i><i></i></div>
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Kilit ekranı -->
+  <div id="lock" class="screen hidden">
+    <div class="lock-clock">
+      <div id="lockTime"></div>
+      <div id="lockDate"></div>
+    </div>
+    <div class="lock-hint">Kilidi açmak için tıklayın veya bir tuşa basın</div>
+    <div class="login hidden">
+      <div class="avatar">👤</div>
+      <div class="username"></div>
+      <button id="signIn" class="btn accent">Oturum aç</button>
+      <small>Şifre gerekmez — bu bir simülasyondur.</small>
+    </div>
+    <div class="lock-foot">Win11 Web · Eğitim amaçlı bir simülasyondur, Microsoft ile bağlantılı değildir.</div>
+  </div>
+
+  <!-- Masaüstü -->
+  <div id="desktop" class="hidden">
+    <div id="icons"></div>
+    <div id="snapHint"></div>
+    <div id="windows"></div>
+
+    <div id="ctxmenu" class="menu hidden"></div>
+
+    <!-- Başlat menüsü -->
+    <div id="startmenu" class="flyout hidden">
+      <div class="sm-search"><span>🔍</span><input id="smSearch" placeholder="Uygulama, ayar ve belge arayın" autocomplete="off"></div>
+      <div class="sm-section">
+        <div class="sm-head"><b>Sabitlenmiş</b></div>
+        <div class="sm-grid" id="smGrid"></div>
+      </div>
+      <div class="sm-section">
+        <div class="sm-head"><b>Önerilenler</b></div>
+        <div class="sm-rec" id="smRec"></div>
+      </div>
+      <div class="sm-foot">
+        <div class="sm-user"><span class="avatar sm">👤</span><span class="username"></span></div>
+        <button id="powerBtn" class="icon-btn" title="Güç">⏻</button>
+        <div id="powerMenu" class="menu hidden">
+          <button data-p="lock">🔒 Kilitle</button>
+          <button data-p="restart">🔄 Yeniden başlat</button>
+          <button data-p="off">⏻ Kapat</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hızlı ayarlar -->
+    <div id="quick" class="flyout hidden">
+      <div class="q-grid">
+        <button class="q-tile on" data-q="wifi"><span>📶</span>Wi-Fi</button>
+        <button class="q-tile on" data-q="bt"><span>🔷</span>Bluetooth</button>
+        <button class="q-tile" data-q="plane"><span>✈️</span>Uçak modu</button>
+        <button class="q-tile" data-q="night"><span>🌙</span>Gece ışığı</button>
+        <button class="q-tile" data-q="theme"><span>🌓</span>Tema</button>
+        <button class="q-tile" data-q="focus"><span>🎯</span>Odaklan</button>
+      </div>
+      <label class="q-slider"><span>☀️</span><input type="range" id="qBright" min="30" max="100"></label>
+      <label class="q-slider"><span>🔊</span><input type="range" id="qVol" min="0" max="100" value="60"></label>
+      <div class="q-foot"><span id="qBattery">🔋 %100</span><button class="icon-btn" id="qSettings" title="Tüm ayarlar">⚙️</button></div>
+    </div>
+
+    <!-- Takvim -->
+    <div id="calendar" class="flyout hidden"></div>
+
+    <div id="toasts"></div>
+
+    <!-- Görev çubuğu -->
+    <div id="taskbar">
+      <div class="tb-left"><button class="tb-btn widget" id="widgetBtn" title="Hava durumu">⛅ <span>18°C</span></button></div>
+      <div class="tb-center">
+        <button class="tb-btn" id="startBtn" title="Başlat"><span class="logo"><i></i><i></i><i></i><i></i></span></button>
+        <button class="tb-btn" id="searchBtn" title="Ara">🔍</button>
+        <div id="tbApps"></div>
+      </div>
+      <div class="tb-right">
+        <button class="tb-btn tray" id="trayBtn" title="Hızlı ayarlar"><span class="lang">TUR</span> 📶 🔊 🔋</button>
+        <button class="tb-btn clock" id="clockBtn" title="Takvim"><span id="tbTime"></span><span id="tbDate"></span></button>
+        <button id="showDesktop" title="Masaüstünü göster"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kapalı ekran -->
+  <div id="off" class="screen hidden">
+    <button id="powerOn" title="Başlat">⏻</button>
+    <p>Bilgisayar kapatıldı. Başlatmak için düğmeye basın.</p>
+  </div>
+
+  <!-- Parlaklık ve gece ışığı katmanları -->
+  <div id="night"></div>
+  <div id="dim"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
