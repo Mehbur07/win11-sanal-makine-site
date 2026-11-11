@@ -2,6 +2,21 @@
 
 ### [2026-11-11 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - `feature/device-folder-storage`: localStorage yerine depolama katmanı (`HandleBackend` / `IdbBackend` / `MemoryBackend`, hepsi load-read-write-mkdir-remove arayüzü)
+  - Cihaz klasörü: File System Access API ile seçilen konumda `Win11 Web` klasörü; tutamaç (handle) IndexedDB'de, izin gerekirse "Oturum aç" tıklamasında isteniyor
+  - Klasör seçilemeyen tarayıcılarda OPFS (yoksa IndexedDB); eski `w11:fs` localStorage verisi ilk açılışta otomatik taşınıyor
+  - Paint Resimler'e PNG kaydediyor, yeni Fotoğraflar uygulaması; Dosya Gezgini'ne Cihazdan ekle / İndir / Yenile; Ayarlar > Depolama
+  - `:` karakteri diskte geçersiz olduğu için "Yerel Disk (C:)" diskte U+A789 ile saklanıyor
+- **Son Commit:** 4e604af feat: add browser-based Windows 11 desktop simulation
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Gerçek cihazlarda (Android Chrome, iPhone Safari) klasör seçme ve kaydetmeyi elle denemek; istenirse klasörü ZIP olarak indirme eklemek
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Klasör seçme penceresi otomatik test edilemiyor (kullanıcı tıklaması gerekiyor); OPFS yolu headless Chrome'da CDP ile test edildi
+  - Headless Chrome `--virtual-time-budget` ile disk işlemleri bitmeden ekran görüntüsü alıyor; test için `scratchpad/cdp.mjs` gibi gerçek zamanlı CDP sürücüsü kullanılmalı
+  - Klasöre dışarıdan eklenen dosyalar ancak ⟳ Yenile veya sayfa yenilemesiyle görünür
+
+### [2026-11-11 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Saf HTML/CSS/JS ile tarayıcıda çalışan Windows 11 simülasyonu yazıldı (framework/bağımlılık yok).
   - Pencere yöneticisi, görev çubuğu, Başlat menüsü ve 7 uygulama eklendi.
   - Veriler localStorage'da `w11:` önekiyle tutuluyor; sunucu yok.

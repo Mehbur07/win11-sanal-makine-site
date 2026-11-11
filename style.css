@@ -346,6 +346,26 @@ body.dragging { cursor: default; }
 .st-preview { height: 150px; border-radius: 8px; background-size: cover; margin-bottom: 14px; border: 1px solid var(--border); position: relative; }
 .st-preview::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 14px; background: var(--surface); border-radius: 0 0 8px 8px; }
 
+/* Fotoğraflar */
+.ph { display: flex; flex-direction: column; height: 100%; }
+.ph-name { margin-left: auto; font-size: 12px; color: var(--muted); padding-right: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ph-view { flex: 1; min-height: 0; display: grid; place-items: center; background: #161616; overflow: hidden; }
+.ph-view img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.ph-view img.hidden { display: none; }
+.ph-empty { color: #aaa; padding: 24px; text-align: center; line-height: 1.6; }
+.ex-status { justify-content: space-between; }
+.ex-where { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* İletişim kutusu */
+.modal { position: fixed; inset: 0; z-index: 8500; background: rgba(0, 0, 0, .4); display: grid; place-items: center; padding: 16px; animation: fadeIn .15s ease; }
+@keyframes fadeIn { from { opacity: 0; } }
+.dlg { width: min(480px, 100%); max-height: calc(100vh - 32px); overflow: auto; background: var(--surface-solid); color: var(--text); border: 1px solid var(--border); border-radius: 10px; box-shadow: var(--shadow); padding: 22px 24px; animation: winIn .18s ease; }
+.dlg h3 { margin: 0 0 12px; font-size: 18px; font-weight: 600; }
+.dlg p { margin: 0 0 20px; color: var(--text2); line-height: 1.55; font-size: 13.5px; user-select: text; }
+.dlg p small { color: var(--muted); }
+.dlg-btns { display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; }
+.btn:disabled { opacity: .5; }
+
 /* ---------- Mobil ---------- */
 @media (max-width: 700px) {
   .tb-left { display: none; }

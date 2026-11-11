@@ -16,12 +16,27 @@ Tarayıcıda çalışan, Windows 11 görünümünde bir masaüstü simülasyonu.
   - 📁 Dosya Gezgini — sanal dosya sistemi, klasör/dosya oluşturma, Geri Dönüşüm Kutusu
   - 📝 Not Defteri — Ctrl+S ile kaydetme
   - 🧮 Hesap Makinesi — klavye desteği
-  - 🎨 Paint — kalem, silgi, çizgi, dikdörtgen, elips, PNG indirme
+  - 🎨 Paint — kalem, silgi, çizgi, dikdörtgen, elips; çizimleri Resimler klasörüne PNG olarak kaydeder
+  - 🖼️ Fotoğraflar — Resimler klasöründeki resimleri gösterir, Paint'te düzenlemeye açar
   - 🌐 Web Tarayıcı — sayfaları pencere içinde açar
   - 💻 Terminal — `help`, `dir`, `cd`, `type`, `mkdir`, `echo`, `start` gibi komutlar
   - ⚙️ Ayarlar — açık/koyu tema, duvar kâğıdı, vurgu rengi, parlaklık, gece ışığı
-- Dosyalar ve ayarlar tarayıcının **localStorage** alanında saklanır (sayfa yenilense de kaybolmaz)
+- Dosyalar **cihazda gerçek bir klasöre** kaydedilir (aşağıya bakın); ayarlar tarayıcıda saklanır
 - Mobil uyumlu (dar ekranda pencereler tam ekran açılır)
+
+## Dosyalar nerede saklanır?
+
+Windows işlemleri (pencereler, uygulamalar, Dosya Gezgini) tamamen sitede çalışır; oluşturduğunuz dosyalar ise cihazınıza yazılır. İlk girişte nerede saklanacağı sorulur, sonradan **Ayarlar > Depolama**'dan değiştirilebilir.
+
+| Seçenek | Nasıl çalışır | Desteklenen tarayıcılar |
+|---|---|---|
+| 📁 **Cihazımda klasör** | Seçtiğiniz konumda (ör. Belgeler) `Win11 Web` adlı gerçek bir klasör oluşturulur. Not Defteri, Paint ve Dosya Gezgini'ndeki her şey bu klasörde gerçek dosya/klasör olarak durur; telefonun veya bilgisayarın dosya yöneticisinden de görülebilir. | Chrome, Edge, Opera (bilgisayar) ve Android Chrome |
+| 🌐 **Tarayıcıda** | Dosyalar yine bu cihazda, tarayıcının siteye ayırdığı özel alanda (OPFS, yoksa IndexedDB) saklanır. Dosya Gezgini'ndeki **⬇️ İndir** ile cihazın İndirilenler klasörüne alınabilir. | Tüm modern tarayıcılar (iPhone/iPad Safari ve Firefox dahil) |
+
+- Klasör izni tarayıcı tarafından hatırlanmazsa, sonraki ziyarette **Oturum aç** düğmesine basınca tekrar sorulur.
+- Dosya Gezgini'ndeki **⬆️ Cihazdan ekle** ile telefondaki/bilgisayardaki dosyalar (ör. galerideki resimler) klasöre kopyalanır.
+- Klasöre dışarıdan (dosya yöneticisiyle) eklenen dosyaları görmek için Dosya Gezgini'nde **⟳ Yenile**'ye basın.
+- **Sıfırla** yalnızca tarayıcıdaki verileri siler; cihazdaki `Win11 Web` klasörüne dokunmaz.
 
 ## Çalıştırma
 
@@ -39,6 +54,7 @@ python -m http.server 8000   # ardından http://localhost:8000
 
 - HTML, CSS (değişkenlerle tema, `backdrop-filter` ile buzlu cam efekti)
 - Saf JavaScript (framework yok)
+- File System Access API (cihaz klasörü), Origin Private File System ve IndexedDB (tarayıcı depolaması)
 - GitHub Pages (yayınlama)
 
 ## Dosya yapısı
@@ -47,8 +63,10 @@ python -m http.server 8000   # ardından http://localhost:8000
 |---|---|
 | `index.html` | Sayfa iskeleti: açılış/kilit ekranı, masaüstü, görev çubuğu, paneller |
 | `style.css` | Tüm görünüm ve açık/koyu tema |
-| `app.js` | Pencere yöneticisi, sanal dosya sistemi ve tüm uygulamalar |
+| `app.js` | Depolama katmanı, pencere yöneticisi, sanal dosya sistemi ve tüm uygulamalar |
 
 ## Bilinen sınırlamalar
 
+- iPhone/iPad (Safari) ve Firefox, sitelerin cihazda istenen yere klasör oluşturmasına izin vermez; bu cihazlarda dosyalar tarayıcı depolamasında tutulur.
+- Klasör yerel çalıştırmada da çalışır, ama `file://` ile açınca bazı tarayıcılar depolamayı kısıtlar; `python -m http.server` ile açmanız önerilir.
 - Web Tarayıcı'da Google, YouTube gibi pek çok site güvenlik nedeniyle başka sayfa içinde açılmaya izin vermez; bu durumda ↗ düğmesiyle gerçek tarayıcıda açabilirsiniz.
