@@ -1,3 +1,5 @@
+import { readPref, writePref } from '../lib/prefs.ts';
+
 // Dil seçimi: önce kullanıcının daha önce seçtiği dil, yoksa tarayıcının dili
 export type Lang = 'tr' | 'en';
 
@@ -12,19 +14,15 @@ export function detectLang(saved: string | null, browserLang: string | undefined
   return (browserLang ?? 'tr').toLowerCase().startsWith('tr') ? 'tr' : 'en';
 }
 
-// Gizli pencere veya kapalı depolamada localStorage hata verebilir; sessizce yok say
+// Tarih/saat biçimlendirme için dil kodu
+export function localeOf(lang: Lang): string {
+  return lang === 'tr' ? 'tr-TR' : 'en-US';
+}
+
 export function readSavedLang(): string | null {
-  try {
-    return localStorage.getItem(LANG_STORAGE_KEY);
-  } catch {
-    return null;
-  }
+  return readPref(LANG_STORAGE_KEY);
 }
 
 export function saveLang(lang: Lang): void {
-  try {
-    localStorage.setItem(LANG_STORAGE_KEY, lang);
-  } catch {
-    /* depolama kapalıysa seçim yalnızca bu oturumda geçerli */
-  }
+  writePref(LANG_STORAGE_KEY, lang);
 }

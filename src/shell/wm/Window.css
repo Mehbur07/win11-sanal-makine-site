@@ -1,0 +1,212 @@
+.wm-layer {
+  position: absolute;
+  inset: 0 0 calc(var(--panel-h) + env(safe-area-inset-bottom)) 0;
+  /* Katmanın boş yerleri masaüstü simgelerine tıklamayı engellemesin */
+  pointer-events: none;
+}
+
+.wm-preview {
+  position: absolute;
+  border-radius: var(--radius);
+  border: 2px solid var(--accent);
+  background: var(--glow-soft);
+  box-shadow: 0 0 30px var(--glow);
+  backdrop-filter: blur(4px);
+  transition: all 0.15s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+  overflow: hidden;
+  outline: none;
+  animation: window-in 0.16s ease-out;
+}
+
+.window[hidden] {
+  display: none;
+}
+
+.window[data-focused='true'] {
+  border-color: var(--border-strong);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.55),
+    0 0 24px var(--glow-soft);
+}
+
+.window[data-snap='max'],
+.shell[data-mode='phone'] .window {
+  border-radius: 0;
+  border-width: 0;
+}
+
+.window[data-snap='left'] {
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.window[data-snap='right'] {
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.window:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: -2px;
+}
+
+.window__titlebar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--title-h);
+  padding: 0 4px 0 10px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+  /* Dokunmatikte sürükleme sayfayı kaydırmasın */
+  touch-action: none;
+  cursor: default;
+}
+
+.window[data-focused='false'] .window__titlebar {
+  opacity: 0.8;
+}
+
+.window__title {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.window__buttons {
+  display: flex;
+  gap: 2px;
+}
+
+.window__buttons button {
+  display: grid;
+  place-items: center;
+  width: var(--hit);
+  height: var(--hit);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.window__buttons button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.window__buttons button:hover {
+  background: var(--glow-soft);
+  color: var(--accent-soft);
+}
+
+.window__buttons .window__close:hover {
+  background: #e81c4f;
+  color: #fff;
+}
+
+.window__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* Boyutlandırma tutamakları: kenarlar ve köşeler */
+.window__handle {
+  position: absolute;
+  touch-action: none;
+  z-index: 2;
+}
+
+.window__handle--n,
+.window__handle--s {
+  left: var(--handle);
+  right: var(--handle);
+  height: var(--handle);
+  cursor: ns-resize;
+}
+
+.window__handle--e,
+.window__handle--w {
+  top: var(--handle);
+  bottom: var(--handle);
+  width: var(--handle);
+  cursor: ew-resize;
+}
+
+.window__handle--n {
+  top: 0;
+}
+.window__handle--s {
+  bottom: 0;
+}
+.window__handle--e {
+  right: 0;
+}
+.window__handle--w {
+  left: 0;
+}
+
+.window__handle--ne,
+.window__handle--nw,
+.window__handle--se,
+.window__handle--sw {
+  width: calc(var(--handle) * 2);
+  height: calc(var(--handle) * 2);
+}
+
+.window__handle--ne {
+  top: 0;
+  right: 0;
+  cursor: nesw-resize;
+}
+.window__handle--sw {
+  bottom: 0;
+  left: 0;
+  cursor: nesw-resize;
+}
+.window__handle--nw {
+  top: 0;
+  left: 0;
+  cursor: nwse-resize;
+}
+.window__handle--se {
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+}
+
+@keyframes window-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .window,
+  .wm-preview {
+    animation: none;
+    transition: none;
+  }
+}
