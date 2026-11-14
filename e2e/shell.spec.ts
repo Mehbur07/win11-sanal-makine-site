@@ -4,6 +4,8 @@ import { expect, test, type Page } from '@playwright/test';
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
     if (!localStorage.getItem('vmos:lang')) localStorage.setItem('vmos:lang', 'tr');
+    // Depolama sorusu bu testlerin konusu değil (files.spec.ts'te deneniyor)
+    if (!localStorage.getItem('vmos:storage')) localStorage.setItem('vmos:storage', 'browser');
   });
 });
 

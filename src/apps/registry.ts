@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { About } from './about/About.tsx';
 import { ComingSoon } from './coming-soon/ComingSoon.tsx';
+import { Files } from './files/Files.tsx';
 import type { AppDefinition, AppId } from './types.ts';
 
 // Tüm uygulamaların listesi. Yeni uygulama eklemek için buraya bir satır ekle.
@@ -30,9 +31,8 @@ export const APPS: Record<AppId, AppDefinition> = {
     titleKey: 'app.files',
     icon: Folder,
     color: '#FFC25A',
-    size: { w: 760, h: 500 },
-    component: ComingSoon,
-    comingInPhase: 3,
+    size: { w: 860, h: 540 },
+    component: Files,
   },
   editor: {
     id: 'editor',

@@ -3,7 +3,7 @@
 **VirtualMOS** (Virtual MehburOS), MehburOS'un tarayıcıda çalışan sanal masaüstüdür.
 Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazılacak.
 
-> Durum: **Faz 2 tamamlandı.** Faz 3, kullanıcı "başla" dediğinde başlar.
+> Durum: **Faz 3 tamamlandı.** Faz 4, kullanıcı "başla" dediğinde başlar.
 > Her faz ayrı branch + PR ile ilerler; her fazın sonunda canlı sitede kontrol edilip onay alınır.
 
 ## Alınan kararlar
@@ -56,11 +56,11 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 **Bitiş ölçütü:** Bilgisayar, tablet ve telefonda pencereler rahatça kullanılıyor.
 
 ### Faz 3 — Depolama ve Dosyalar
-- [ ] Depolama katmanı Win11 Web'den taşınır: cihaz klasörü (`VirtualMOS` adlı) → OPFS → IndexedDB
-- [ ] Eski "Win11 Web" klasörünü içe aktarma seçeneği (kullanıcının eski dosyaları için)
-- [ ] İlk açılışta "Dosyalar nerede saklansın?" seçimi, Ayarlar'da değiştirme
-- [ ] Dosyalar uygulaması: klasörler, kopyala/taşı/yeniden adlandır, çöp kutusu, cihazdan ekle, indir
-- [ ] Depolama için birim testleri
+- [x] Depolama katmanı yeniden yazıldı: cihaz klasörü (`VirtualMOS` adlı) → OPFS → IndexedDB → (son çare) bellek
+- [x] Eski "Win11 Web" klasörünü içe aktarma ("Win11 Web'den aktar" / "Klasör içe aktar")
+- [x] İlk açılışta "Dosyalar nerede saklansın?" seçimi; izin düşerse "İzin ver" penceresi; konum Dosyalar'dan değiştirilir (Ayarlar'a Faz 4'te eklenecek), değişince dosyalar yeni yere kopyalanır
+- [x] Dosyalar uygulaması: klasörler, yeni klasör/metin dosyası, kopyala/kes/yapıştır, yeniden adlandır, çöp kutusu (geri yükle/kalıcı sil/boşalt), cihazdan ekle, sürükle-bırak, indir, resim/metin önizleme, ızgara/liste görünümü, klavye kısayolları, dokunmatikte seçim dairesi ve uzun basma
+- [x] Depolama için birim testleri (aynı testler bellekte ve IndexedDB'de) + tarayıcı testleri (OPFS ve cihaz klasörü yolu)
 
 **Bitiş ölçütü:** Dosyalar sayfa yenilenince ve tarayıcı kapanınca korunuyor.
 

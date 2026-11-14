@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import type { MessageVars } from '../../i18n/context.ts';
 import type { MessageKey } from '../../i18n/messages.ts';
 
 // Bildirimler metin anahtarıyla saklanır; dil değişince bildirimler de yeni dilde görünür
@@ -6,6 +7,8 @@ export interface AppNotification {
   id: number;
   titleKey: MessageKey;
   bodyKey?: MessageKey;
+  /** Metinlerdeki {isim} yer tutucularının değerleri */
+  vars?: MessageVars;
   time: Date;
   read: boolean;
 }
@@ -13,6 +16,7 @@ export interface AppNotification {
 export interface NotifyInput {
   titleKey: MessageKey;
   bodyKey?: MessageKey;
+  vars?: MessageVars;
 }
 
 export interface NotificationsValue {
