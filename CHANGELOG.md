@@ -9,6 +9,7 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yapısına uyar.
 - Tarayıcı güvenlik filtresinin siteyi yanlışlıkla sahte giriş sayfası sanmaması için Windows logosu yerine kendi logomuz kullanılıyor ve kilit ekranındaki düğme "Masaüstünü aç" oldu.
 
 ### Eklendi
+- Projenin VirtualMOS adıyla, MehburOS temasında baştan yazılması için fazlara bölünmüş yol haritası eklendi.
 - Dosyalar artık cihazda kaydediliyor: ilk girişte sorulup seçilen konumda "Win11 Web" adlı gerçek bir klasör oluşturuluyor; klasör seçmeyi desteklemeyen cihazlarda (iPhone/iPad, Firefox) dosyalar tarayıcının bu cihazdaki depolama alanında tutuluyor.
 - Ayarlar'a Depolama sayfası, Dosya Gezgini'ne "Cihazdan ekle", "İndir" ve "Yenile" düğmeleri, resimleri gösteren Fotoğraflar uygulaması eklendi; Paint çizimleri indirmek yerine Resimler klasörüne kaydediyor.
 - Olmayan bir adrese gidildiğinde Windows hata penceresi görünümünde, kullanıcının tema ve duvar kâğıdını kullanan özel bir 404 sayfası gösteriliyor.
