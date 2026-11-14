@@ -3,7 +3,7 @@
 **VirtualMOS** (Virtual MehburOS), MehburOS'un tarayıcıda çalışan sanal masaüstüdür.
 Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazılacak.
 
-> Durum: **Planlama.** Çalışma kullanıcı "başla" dediğinde Faz 0 ile başlar.
+> Durum: **Faz 0 tamamlandı.** Faz 1, kullanıcı "başla" dediğinde başlar.
 > Her faz ayrı branch + PR ile ilerler; her fazın sonunda canlı sitede kontrol edilip onay alınır.
 
 ## Alınan kararlar
@@ -13,22 +13,25 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 | Kimlik | MehburOS teması: neon camgöbeği (`#2DE2F5`) + siyah (`#05090C`), KDE Plasma'dan esinlenen masaüstü. Windows logosu, adı veya giriş ekranı kullanılmaz |
 | Giriş ekranı | Yok. Kısa açılış animasyonundan sonra doğrudan masaüstü |
 | Adres | `virtualmos.github.io` (GitHub'da `virtualmos` adlı bir organizasyon gerekir) |
-| Repo | Mevcut repo korunur, adı değişir (geçmiş kaybolmaz) |
+| Repo | Mevcut repo `virtualmos` organizasyonuna taşındı, adı `virtualmos.github.io` (geçmiş korundu) |
 | Cihaz önceliği | %45 bilgisayar, %45 tablet, %10 telefon. Arayüz dokunmatik dostu tasarlanır |
 | Cihaza kaydetme | Kalır (cihazda klasör; desteklemeyen tarayıcılarda tarayıcı depolaması) |
 | Dil | Türkçe + İngilizce |
 | Teknik yapı | Vite + React + TypeScript, paket yöneticisi pnpm |
 | Kalite | ESLint + Prettier (lint/format), Vitest (birim test), Playwright (tarayıcı testi), GitHub Actions ile otomatik kontrol ve yayın |
-| Yeni uygulama | MehburMC Launcher |
+| Yeni uygulama | MehburMC Launcher — gerçek launcher'ın arayüzünü taklit eden demo |
+| Logo | MehburOS logosu (`assets/brand/mehburos-icon-*.png`) |
+| Eski dosyalar | Win11 Web'deki dosyalar cihaz klasörü üzerinden elle aktarılacak (Faz 3) |
 
 ## Fazlar
 
 ### Faz 0 — Hazırlık ve taşınma
-- [ ] Kullanıcı GitHub'da ücretsiz `virtualmos` organizasyonunu oluşturur (bu adım API ile yapılamaz)
-- [ ] Mevcut kodun son hali `v0.1.0-win11` etiketiyle saklanır (istenirse geri dönülebilsin)
-- [ ] Repo, onay alınarak `virtualmos` organizasyonuna taşınır ve adı `virtualmos.github.io` yapılır
-- [ ] Repo açıklaması, konu etiketleri, Dependabot ve branch koruması yeniden ayarlanır
-- [ ] Eski adres (`mehbur07.github.io/win11-sanal-makine-site/`) için durum notu: SmartScreen bildirimi yapıldı mı?
+- [x] Kullanıcı GitHub'da ücretsiz `virtualmos` organizasyonunu oluşturur (bu adım API ile yapılamaz)
+- [x] Mevcut kodun son hali `v0.1.0-win11` etiketiyle saklanır (istenirse geri dönülebilsin)
+- [x] Repo, onay alınarak `virtualmos` organizasyonuna taşınır ve adı `virtualmos.github.io` yapılır
+- [x] Repo açıklaması, konu etiketleri, Dependabot ve branch koruması yeniden ayarlanır (koruma ve Dependabot taşımayla birlikte geldi)
+- [x] Eski adres (`mehbur07.github.io/win11-sanal-makine-site/`) artık kullanılmıyor; SmartScreen uyarısı yalnızca o adresteydi
+- [x] Eski site dosyaları kaldırıldı, yerine MehburOS logolu geçici "yakında" ve 404 sayfaları kondu
 
 **Bitiş ölçütü:** `virtualmos.github.io` açılıyor (geçici "yakında" sayfası).
 
@@ -53,6 +56,7 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 
 ### Faz 3 — Depolama ve Dosyalar
 - [ ] Depolama katmanı Win11 Web'den taşınır: cihaz klasörü (`VirtualMOS` adlı) → OPFS → IndexedDB
+- [ ] Eski "Win11 Web" klasörünü içe aktarma seçeneği (kullanıcının eski dosyaları için)
 - [ ] İlk açılışta "Dosyalar nerede saklansın?" seçimi, Ayarlar'da değiştirme
 - [ ] Dosyalar uygulaması: klasörler, kopyala/taşı/yeniden adlandır, çöp kutusu, cihazdan ekle, indir
 - [ ] Depolama için birim testleri
@@ -67,11 +71,11 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 **Bitiş ölçütü:** Win11 Web'deki tüm özellikler yeni tasarımla çalışıyor.
 
 ### Faz 5 — MehburMC Launcher uygulaması
-- [ ] Kapsam kararı (bkz. Açık sorular)
-- [ ] Launcher görünümünde uygulama: sürüm bilgisi ve haberler (GitHub Releases'ten), Windows/Linux indirme bağlantıları
-- [ ] Not: Tarayıcı içinden Minecraft başlatılamaz; uygulama tanıtım ve indirme merkezi olur
+- [ ] Gerçek MehburMC Launcher'ın arayüzünü taklit eden demo (sürüm seçimi, profil, haberler; "Oyna" düğmesi demo olduğunu söyler)
+- [ ] Sürüm bilgisi GitHub Releases'ten; Windows/Linux için gerçek indirme bağlantıları
+- [ ] Not: Tarayıcı içinden Minecraft başlatılamaz
 
-**Bitiş ölçütü:** Uygulamadan en güncel launcher sürümü görülüp indirilebiliyor.
+**Bitiş ölçütü:** Demo gerçek launcher gibi görünüyor; en güncel sürüm görülüp indirilebiliyor.
 
 ### Faz 6 — Cilalama
 - [ ] PWA: ana ekrana eklenebilir, internet olmadan da açılabilir (tablet için önemli)
@@ -85,8 +89,5 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 - [ ] m07-site kartı "Hazır Projeler"e döner: **Siteye Git** + **Kaynak Kodu**
 - [ ] Edge'de SmartScreen ve Google Safe Browsing kontrolü
 
-## Açık sorular (ilgili faz başlamadan cevaplanacak)
-1. **Faz 0:** `virtualmos` organizasyonunu kullanıcı mı oluşturacak? Organizasyonlar API ile açılamıyor, GitHub sitesinden açılması gerekiyor.
-2. **Faz 3:** Eski Win11 Web'de kaydedilmiş dosyalar yeni siteye taşınsın mı? Adres değiştiği için tarayıcı depolaması otomatik taşınamaz. Cihaz klasörü seçilerek elle aktarılabilir.
-3. **Faz 5:** MehburMC Launcher uygulaması yalnızca tanıtım ve indirme mi olsun, yoksa gerçek launcher'ın arayüzünü taklit eden bir demo mu?
-4. **Genel:** MehburOS logosu (`mehburos-icon`) VirtualMOS'ta da kullanılsın mı, yoksa ayrı bir VirtualMOS logosu mu çizilsin?
+## Açık sorular
+Şu an açık soru yok (Faz 0 öncesi sorular cevaplandı, kararlar yukarıdaki tabloda).
