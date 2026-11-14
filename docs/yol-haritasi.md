@@ -3,7 +3,7 @@
 **VirtualMOS** (Virtual MehburOS), MehburOS'un tarayıcıda çalışan sanal masaüstüdür.
 Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazılacak.
 
-> Durum: **Faz 1 tamamlandı.** Faz 2, kullanıcı "başla" dediğinde başlar.
+> Durum: **Faz 2 tamamlandı.** Faz 3, kullanıcı "başla" dediğinde başlar.
 > Her faz ayrı branch + PR ile ilerler; her fazın sonunda canlı sitede kontrol edilip onay alınır.
 
 ## Alınan kararlar
@@ -45,12 +45,13 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 **Bitiş ölçütü:** Canlı sitede MehburOS renklerinde açılış ve masaüstü, testler otomatik çalışıyor.
 
 ### Faz 2 — Masaüstü kabuğu
-- [ ] Pencere yöneticisi: aç/kapat, sürükle, boyutlandır, küçült, tam ekran, kenara yapıştırma (snap)
-- [ ] Alt panel (görev çubuğu), uygulama menüsü (arama dahil), sistem tepsisi, saat/takvim
-- [ ] Hızlı ayarlar, bildirimler, sağ tık menüsü, masaüstü simgeleri
-- [ ] **Tablet modu:** dokunmatik sürükleme, büyük dokunma alanları, iki uygulamayı yan yana bölme
-- [ ] **Telefon modu:** uygulamalar tam ekran, uygulama çekmecesi
-- [ ] Klavye kısayolları ve erişilebilirlik temeli (odak, ekran okuyucu etiketleri)
+- [x] Pencere yöneticisi: aç/kapat, sürükle, boyutlandır, küçült, tam ekran, kenara yapıştırma (snap) + önizleme
+- [x] Alt panel (görev çubuğu), uygulama menüsü (arama dahil), sistem tepsisi, saat/takvim
+- [x] Hızlı ayarlar (dil, açık/koyu tema, tam ekran, masaüstünü göster), bildirimler, sağ tık / uzun basma menüsü, masaüstü simgeleri
+- [x] **Tablet modu:** dokunmatik sürükleme, büyük dokunma alanları, "yan yana" düğmesi ve kenara sürükleyerek bölme
+- [x] **Telefon modu:** uygulamalar tam ekran, masaüstü tüm uygulamaları gösteren ana ekran
+- [x] Klavye kısayolları (Alt + M/Q/D/oklar, Esc) ve erişilebilirlik temeli (odak, ekran okuyucu etiketleri)
+- [x] Henüz yazılmamış uygulamalar "yakında" penceresi açar; "Hakkında" uygulaması kısayolları ve ipuçlarını gösterir
 
 **Bitiş ölçütü:** Bilgisayar, tablet ve telefonda pencereler rahatça kullanılıyor.
 

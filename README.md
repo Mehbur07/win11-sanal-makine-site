@@ -6,8 +6,17 @@ MehburOS temalı, tarayıcıda çalışan sanal masaüstü. Kurulum gerektirmede
 
 🔗 **Adres:** https://virtualmos.github.io/
 
-> 🚧 **Durum:** Faz 1 (temel iskelet) tamamlandı: açılış animasyonu, MehburOS duvar kâğıtlı masaüstü, Türkçe/İngilizce.
-> Pencereler ve uygulamalar sonraki fazlarda geliyor. Plan için: [yol haritası](docs/yol-haritasi.md).
+> 🚧 **Durum:** Faz 2 (masaüstü kabuğu) tamamlandı: pencereler, panel, uygulama menüsü, bildirimler, hızlı ayarlar, tablet ve telefon modları.
+> Uygulamaların içi sonraki fazlarda geliyor. Plan için: [yol haritası](docs/yol-haritasi.md).
+
+## Kullanım ipuçları
+
+| Nerede | Ne yapılır |
+|---|---|
+| Bilgisayar | Pencereyi başlığından ekranın sol/sağ kenarına sürükle → yarım ekran; üst kenara → tam ekran. Masaüstüne sağ tık → menü |
+| Tablet | Aynı sürükleme dokunmatikle de çalışır; pencere başlığındaki **yan yana** düğmesi sola/sağa yaslar |
+| Telefon | Uygulamalar tam ekran açılır; masaüstü ana ekran gibi tüm uygulamaları gösterir |
+| Klavye | `Alt+M` menü, `Alt+Q` kapat, `Alt+↑` büyüt, `Alt+←/→` yasla, `Alt+↓` küçült, `Alt+D` masaüstü, `Esc` menüyü kapat |
 
 ## Neler olacak?
 
@@ -52,9 +61,13 @@ Elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.git
 |---|---|
 | `index.html` | Sayfanın giriş noktası |
 | `src/main.tsx` | Uygulamayı başlatır |
-| `src/App.tsx` | Açılış ekranı → masaüstü geçişi |
-| `src/shell/` | Masaüstü kabuğu (açılış ekranı, masaüstü; ileride panel ve pencere yöneticisi) |
-| `src/apps/` | Uygulamalar (Faz 4'ten itibaren) |
+| `src/App.tsx` | Açılış ekranı → masaüstü geçişi, yeniden başlatma |
+| `src/shell/` | Masaüstü kabuğu: açılış ekranı, masaüstü, simgeler, sağ tık menüsü, cihaz modu (`device.ts`) |
+| `src/shell/wm/` | Pencere yöneticisi: durum (`reducer.ts`), konum hesapları (`geometry.ts`), pencere bileşeni |
+| `src/shell/panel/` | Alt panel, uygulama menüsü, hızlı ayarlar, takvim |
+| `src/shell/notifications/` | Bildirimler ve köşede beliren bildirim kutuları |
+| `src/apps/` | Uygulamalar ve uygulama listesi (`registry.ts`); şimdilik "Hakkında" ve "yakında" penceresi |
+| `src/settings/` | Tema (açık/koyu) seçimi |
 | `src/i18n/` | Türkçe/İngilizce metinler ve dil seçimi |
 | `src/styles/tokens.css` | Tema renkleri ve ölçüleri (MehburOS renkleri) |
 | `src/assets/wallpapers/` | Duvar kâğıtları (16:9 ve 4:3, WebP) |
@@ -66,6 +79,7 @@ Elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.git
 
 - [Vite](https://vite.dev/): geliştirme sunucusu ve derleme
 - [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Lucide](https://lucide.dev/) simgeleri
 - ESLint + Prettier, Vitest + Testing Library, Playwright
 - GitHub Actions + GitHub Pages
 

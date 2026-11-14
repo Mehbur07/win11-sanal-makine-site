@@ -2,6 +2,23 @@
 
 ### [2026-11-14 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Faz 2 (`feature/phase-2-desktop-shell`): pencere yöneticisi (reducer + saf geometri fonksiyonları, sürükle/boyutlandır/yasla/önizleme, çift tık/dokunuşla büyüt), alt panel, aramalı uygulama menüsü, bildirimler + köşe bildirimleri, saat/takvim, hızlı ayarlar, sağ tık/uzun basma menüsü, masaüstü simgeleri
+  - Cihaz modu `device.ts`: kısa kenar < 600 px → telefon, dokunmatik → tablet, değilse bilgisayar; tablette "yan yana" düğmesi, telefonda tam ekran uygulamalar ve ana ekran ızgarası
+  - Açık tema eklendi (`vmos:theme`); uygulama simgeleri iki temada da koyu neon kare
+  - Henüz yazılmamış 9 uygulama `ComingSoon` penceresi açıyor (`registry.ts` → `comingInPhase`); gerçek uygulama: Hakkında
+  - Yeni bağımlılık: `lucide-react` (simgeler); MehburMC logosu `public/brand/mehburmc-128.webp`
+  - Testler: 40 birim test, 33 Playwright testi (6'sı cihaza özel olduğu için diğer cihazlarda atlanıyor)
+- **Son Commit:** 10ec855 Merge pull request #6 from virtualmos/feature/phase-1-skeleton
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı "başla" deyince Faz 3 (depolama katmanı + Dosyalar uygulaması)
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Gerçek dokunmatik cihazlarda (Android tablet, iPad) sürükleme ve uzun basma elle denenmeli; iPhone Safari tam ekranı desteklemediği için o düğme orada gizli
+  - Klavye kısayolları Alt tabanlı; Mac'te Option tuşu
+  - `pnpm audit`: minimatch (yalnızca ESLint içinde) orta seviye bulgu devam ediyor
+  - Kullanıcı "başla" demeden bir sonraki faza geçilmeyecek
+
+### [2026-11-14 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Faz 1 (`feature/phase-1-skeleton`): Vite 8 + React 19 + TypeScript 6.0 + pnpm 12 iskeleti; eski "yakında" sayfası yerini uygulamaya bıraktı, logo ve 404 `public/` altına taşındı
   - TypeScript 7 yerine 6.0 seçildi: typescript-eslint henüz `<6.1` destekliyor
   - Kalite: ESLint 10 + Prettier, Vitest (7 birim test), Playwright (3 senaryo × pc/tablet/telefon = 9 test)

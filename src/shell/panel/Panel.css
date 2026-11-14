@@ -1,0 +1,157 @@
+/* KDE Plasma'dan esinlenen alt panel */
+.panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--panel-h);
+  padding: 0 8px env(safe-area-inset-bottom);
+  box-sizing: content-box;
+  border-top: 1px solid var(--border);
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px) saturate(1.3);
+}
+
+.panel button {
+  font: inherit;
+  color: var(--text);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.panel__launcher {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: calc(var(--panel-h) - 8px);
+  height: calc(var(--panel-h) - 8px);
+  border-radius: var(--radius-sm);
+}
+
+.panel__launcher img {
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--glow);
+  transition: box-shadow 0.2s;
+}
+
+.panel__launcher:hover img,
+.panel__launcher[aria-expanded='true'] img {
+  box-shadow: 0 0 18px var(--accent);
+}
+
+.panel__tasks {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.panel__task {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(var(--panel-h) - 8px);
+  height: calc(var(--panel-h) - 8px);
+  border-radius: var(--radius-sm);
+}
+
+.panel__task:hover {
+  background: var(--glow-soft);
+}
+
+.panel__task[data-active='true'] {
+  background: rgba(45, 226, 245, 0.16);
+}
+
+/* Açık uygulama göstergesi: altta küçük neon çizgi */
+.panel__task[data-running='true']::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  width: 6px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--muted);
+  transform: translateX(-50%);
+  transition: width 0.2s;
+}
+
+.panel__task[data-active='true']::after {
+  width: 18px;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+.panel__tray {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+}
+
+.panel__tray-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--hit);
+  height: calc(var(--panel-h) - 12px);
+  min-width: 36px;
+  border-radius: var(--radius-sm);
+}
+
+.panel__tray-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.panel__tray-btn:hover,
+.panel__tray-btn[aria-expanded='true'],
+.panel__clock:hover,
+.panel__clock[aria-expanded='true'] {
+  background: var(--glow-soft);
+}
+
+.panel__badge {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--accent-2);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.panel__clock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  height: calc(var(--panel-h) - 12px);
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel__clock small {
+  color: var(--muted);
+  font-size: 11px;
+}

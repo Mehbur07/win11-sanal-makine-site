@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { I18nContext, type I18nValue } from './context.ts';
-import { detectLang, readSavedLang, saveLang, type Lang } from './lang.ts';
-import { messages, type MessageKey } from './messages.ts';
+import { fillVars, I18nContext, type I18nValue } from './context.ts';
+import { detectLang, localeOf, readSavedLang, saveLang, type Lang } from './lang.ts';
+import { messages } from './messages.ts';
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(() =>
@@ -19,7 +19,12 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<I18nValue>(
-    () => ({ lang, setLang, t: (key: MessageKey) => messages[lang][key] }),
+    () => ({
+      lang,
+      locale: localeOf(lang),
+      setLang,
+      t: (key, vars) => fillVars(messages[lang][key], vars),
+    }),
     [lang, setLang],
   );
 

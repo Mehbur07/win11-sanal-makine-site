@@ -6,6 +6,8 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yapısına uyar.
 ## [Unreleased]
 
 ### Eklendi
+- Masaüstü kabuğu: sürüklenip boyutlandırılabilen, kenara yaslanabilen pencereler; alt panel, aramalı uygulama menüsü, bildirimler, saat/takvim, hızlı ayarlar (dil, açık/koyu tema, tam ekran) ve sağ tık / uzun basma menüsü.
+- Tablette büyük dokunma alanları ve iki uygulamayı yan yana açma; telefonda uygulamalar tam ekran açılıyor ve masaüstü ana ekran gibi davranıyor. Klavye kısayolları ve "Hakkında" uygulaması eklendi.
 - VirtualMOS'un ilk hali: MehburOS logolu açılış animasyonu ve ardından MehburOS duvar kâğıtlı masaüstü; Türkçe/İngilizce dil düğmesi (seçim hatırlanır).
 - Her değişiklikte kodu ve siteyi bilgisayar, tablet ve telefon boyutlarında otomatik test eden ve testler geçince siteyi kendiliğinden yayınlayan altyapı.
 
