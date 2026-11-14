@@ -1,0 +1,50 @@
+/* Tema değişkenleri (tasarım jetonları). Renkler MehburOS'un Neon Camgöbeği–Siyah temasından.
+   Bileşenlerde renkleri doğrudan yazma, buradaki değişkenleri kullan. */
+
+:root {
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, 'Noto Sans', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+}
+
+/* Koyu tema (varsayılan) */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #05090c;
+  --surface: #0e161b;
+  --surface-2: #152128;
+  --surface-glass: rgba(14, 22, 27, 0.72);
+  --text: #e6fcff;
+  --muted: #8fa9b0;
+  --accent: #2de2f5;
+  --accent-soft: #8af3ff;
+  --accent-2: #ff2daa;
+  --warning: #ffc25a;
+  --border: rgba(45, 226, 245, 0.22);
+  --border-strong: rgba(45, 226, 245, 0.45);
+  --glow: rgba(45, 226, 245, 0.45);
+  --glow-soft: rgba(45, 226, 245, 0.14);
+  --neon-text: 0 0 8px #2de2f5, 0 0 28px rgba(45, 226, 245, 0.6);
+}
+
+/* Açık tema (Ayarlar'dan seçilebilecek; Faz 4) */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #eefcfe;
+  --surface: #ffffff;
+  --surface-2: #dff6fa;
+  --surface-glass: rgba(255, 255, 255, 0.78);
+  --text: #05242b;
+  --muted: #4f6c73;
+  --accent: #0aa5b5;
+  --accent-soft: #078694;
+  --accent-2: #d1157f;
+  --warning: #b97800;
+  --border: rgba(10, 165, 181, 0.25);
+  --border-strong: rgba(10, 165, 181, 0.5);
+  --glow: rgba(10, 165, 181, 0.35);
+  --glow-soft: rgba(10, 165, 181, 0.12);
+  --neon-text: 0 0 12px rgba(10, 165, 181, 0.35);
+}

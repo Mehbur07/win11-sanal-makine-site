@@ -1,0 +1,84 @@
+# Her PR'da ve main'e her gönderimde: lint + biçim + tip kontrolü + birim test + derleme + tarayıcı testi.
+# main'de hepsi geçerse site GitHub Pages'e yayınlanır.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    name: Kontrol ve test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Bağımlılıkları kur
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Biçim kontrolü
+        run: pnpm format:check
+
+      - name: Birim testler
+        run: pnpm test
+
+      - name: Derleme (tip kontrolü dahil)
+        run: pnpm build
+
+      - name: Playwright tarayıcısını kur
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Tarayıcı testleri
+        run: pnpm test:e2e
+
+      - name: Test raporunu sakla (hata olursa)
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 7
+
+      - name: Yayın paketini hazırla
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    name: GitHub Pages'e yayınla
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

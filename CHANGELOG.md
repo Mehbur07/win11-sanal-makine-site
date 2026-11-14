@@ -5,6 +5,10 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yapısına uyar.
 
 ## [Unreleased]
 
+### Eklendi
+- VirtualMOS'un ilk hali: MehburOS logolu açılış animasyonu ve ardından MehburOS duvar kâğıtlı masaüstü; Türkçe/İngilizce dil düğmesi (seçim hatırlanır).
+- Her değişiklikte kodu ve siteyi bilgisayar, tablet ve telefon boyutlarında otomatik test eden ve testler geçince siteyi kendiliğinden yayınlayan altyapı.
+
 ### Değiştirildi
 - Proje VirtualMOS adını aldı ve yeni adresine taşındı: https://virtualmos.github.io/ (repo: `virtualmos/virtualmos.github.io`).
 - Eski Win11 Web sitesi kaldırıldı; yeniden yazım bitene kadar MehburOS logolu, Türkçe/İngilizce geçici bir "yakında" sayfası ve sade bir 404 sayfası gösteriliyor.

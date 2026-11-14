@@ -3,7 +3,7 @@
 **VirtualMOS** (Virtual MehburOS), MehburOS'un tarayıcıda çalışan sanal masaüstüdür.
 Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazılacak.
 
-> Durum: **Faz 0 tamamlandı.** Faz 1, kullanıcı "başla" dediğinde başlar.
+> Durum: **Faz 1 tamamlandı.** Faz 2, kullanıcı "başla" dediğinde başlar.
 > Her faz ayrı branch + PR ile ilerler; her fazın sonunda canlı sitede kontrol edilip onay alınır.
 
 ## Alınan kararlar
@@ -36,11 +36,11 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 **Bitiş ölçütü:** `virtualmos.github.io` açılıyor (geçici "yakında" sayfası).
 
 ### Faz 1 — Temel iskelet
-- [ ] Vite + React + TypeScript projesi (pnpm), klasör yapısı: `src/shell`, `src/apps/<uygulama>`, `src/storage`, `src/i18n`
-- [ ] ESLint + Prettier, Vitest, Playwright kurulumu
-- [ ] GitHub Actions: her PR'da lint + test; main'e merge edilince GitHub Pages'e otomatik yayın
-- [ ] Tema değişkenleri (MehburOS renkleri, koyu tema varsayılan) ve TR/EN dil altyapısı
-- [ ] Açılış animasyonu → boş masaüstü ve duvar kâğıdı
+- [x] Vite + React + TypeScript projesi (pnpm), klasör yapısı: `src/shell`, `src/i18n`, `src/styles` (`src/apps`, `src/storage` ilgili fazlarda eklenecek)
+- [x] ESLint + Prettier, Vitest, Playwright kurulumu (Playwright: bilgisayar, tablet, telefon boyutları)
+- [x] GitHub Actions: her PR'da lint + test; main'e merge edilince GitHub Pages'e otomatik yayın
+- [x] Tema değişkenleri (MehburOS renkleri, koyu tema varsayılan, açık tema hazır) ve TR/EN dil altyapısı
+- [x] Açılış animasyonu → MehburOS duvar kâğıtlı masaüstü (16:9 ve 4:3 WebP; dik ekranda resmin tamamı sığar)
 
 **Bitiş ölçütü:** Canlı sitede MehburOS renklerinde açılış ve masaüstü, testler otomatik çalışıyor.
 
