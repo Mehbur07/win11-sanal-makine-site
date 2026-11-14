@@ -1,0 +1,82 @@
+.desktop {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--bg);
+  background-image: url('../assets/wallpapers/wallpaper-16x9.webp');
+  background-size: cover;
+  background-position: center;
+  animation: desktop-in 0.5s ease-out;
+}
+
+/* Tablet ve dik ekranlarda 4:3 duvar kâğıdı daha az kırpılır */
+@media (max-aspect-ratio: 3/2) {
+  .desktop {
+    background-image: url('../assets/wallpapers/wallpaper-4x3.webp');
+  }
+}
+
+/* Dik ekranlarda (telefon, dik tablet) resmin tamamı sığar; kenarlarda aynı resmin
+   karartılmış hali boşluğu doldurur */
+@media (max-aspect-ratio: 4/5) {
+  .desktop {
+    background-image:
+      url('../assets/wallpapers/wallpaper-4x3.webp'),
+      linear-gradient(rgba(5, 9, 12, 0.8), rgba(5, 9, 12, 0.8)),
+      url('../assets/wallpapers/wallpaper-4x3.webp');
+    background-size: contain, cover, cover;
+    background-repeat: no-repeat;
+  }
+}
+
+.desktop__lang {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  min-width: 48px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.desktop__lang:hover {
+  box-shadow: 0 0 18px var(--glow);
+}
+
+.desktop__notice {
+  position: absolute;
+  left: 50%;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 32px);
+  margin: 0;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  color: var(--text);
+  font-size: 14px;
+  text-align: center;
+}
+
+@keyframes desktop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop {
+    animation: none;
+  }
+}

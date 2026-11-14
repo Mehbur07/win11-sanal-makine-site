@@ -2,6 +2,21 @@
 
 ### [2026-11-14 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Faz 1 (`feature/phase-1-skeleton`): Vite 8 + React 19 + TypeScript 6.0 + pnpm 12 iskeleti; eski "yakında" sayfası yerini uygulamaya bıraktı, logo ve 404 `public/` altına taşındı
+  - TypeScript 7 yerine 6.0 seçildi: typescript-eslint henüz `<6.1` destekliyor
+  - Kalite: ESLint 10 + Prettier, Vitest (7 birim test), Playwright (3 senaryo × pc/tablet/telefon = 9 test)
+  - GitHub Actions `ci.yml`: PR'da kontrol+test, main'de test geçince Pages'e yayın; Pages kaynağı "GitHub Actions" yapıldı
+  - Açılış animasyonu (1,8 sn; hareket azaltma tercihinde 0,3 sn) → MehburOS duvar kâğıtlı masaüstü, TR/EN düğmesi (`vmos:lang`)
+- **Son Commit:** 6f45b06 Merge pull request #5 from virtualmos/chore/virtualmos-coming-soon
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı "başla" deyince Faz 2 (pencere yöneticisi, alt panel, uygulama menüsü, tablet/telefon modları)
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - `pnpm audit`: 1 orta seviye bulgu (minimatch, yalnızca ESLint'in içinde, siteye girmiyor); düzeltmesi minimatch 11'de, ESLint güncellenince çözülecek
+  - Masaüstündeki dil düğmesi ve "yakında" yazısı geçici; Faz 2'de panele/Ayarlar'a taşınacak
+  - Kullanıcı "başla" demeden bir sonraki faza geçilmeyecek
+
+### [2026-11-14 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Faz 0: eski kod `v0.1.0-win11` etiketiyle saklandı; kullanıcı onayıyla repo `virtualmos` organizasyonuna taşındı, adı `virtualmos.github.io` oldu; local origin yeni adrese çevrildi
   - Pages, branch koruması (ruleset) ve Dependabot taşımayla korundu; repo açıklaması ve konu etiketleri güncellendi
   - `chore/virtualmos-coming-soon`: eski site dosyaları silindi, MehburOS logolu TR/EN "yakında" sayfası ve sade 404 eklendi; CHANGELOG'da eski içerik `[0.1.0-win11]` başlığına taşındı
