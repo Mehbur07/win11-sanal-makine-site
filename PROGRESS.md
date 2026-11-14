@@ -2,6 +2,20 @@
 
 ### [2026-11-14 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Faz 0: eski kod `v0.1.0-win11` etiketiyle saklandı; kullanıcı onayıyla repo `virtualmos` organizasyonuna taşındı, adı `virtualmos.github.io` oldu; local origin yeni adrese çevrildi
+  - Pages, branch koruması (ruleset) ve Dependabot taşımayla korundu; repo açıklaması ve konu etiketleri güncellendi
+  - `chore/virtualmos-coming-soon`: eski site dosyaları silindi, MehburOS logolu TR/EN "yakında" sayfası ve sade 404 eklendi; CHANGELOG'da eski içerik `[0.1.0-win11]` başlığına taşındı
+  - Kararlar: MehburMC Launcher = arayüz demosu; logo = MehburOS logosu; eski dosyalar cihaz klasörüyle elle aktarılacak
+- **Son Commit:** bcadb71 Merge pull request #4 from Mehbur07/docs/virtualmos-roadmap
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı "başla" deyince Faz 1 (Vite + React + TypeScript + pnpm iskeleti, lint/test, GitHub Actions ile yayın)
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Bilgisayardaki proje klasörünün adı hâlâ `win11-sanal-makine-site` (oturum/hafıza yolları bozulmasın diye değiştirilmedi)
+  - Faz 1'de yayın GitHub Actions'a geçince Pages kaynağı "GitHub Actions" olarak değiştirilmeli
+  - Kullanıcı "başla" demeden bir sonraki faza geçilmeyecek
+
+### [2026-11-14 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Proje baştan yazılacak: ad **VirtualMOS**, MehburOS teması (neon camgöbeği + siyah), giriş ekranı yok, adres `virtualmos.github.io`
   - Teknik karar: Vite + React + TypeScript + pnpm; ESLint/Prettier, Vitest, Playwright, GitHub Actions
   - Cihaz önceliği %45 PC / %45 tablet / %10 telefon; TR + EN; cihaz klasörüne kaydetme kalıyor; yeni uygulama MehburMC Launcher

@@ -1,112 +1,101 @@
 <!doctype html>
-<html lang="tr" data-theme="dark">
+<html lang="tr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Win11 Web</title>
-  <meta name="description" content="Tarayıcıda çalışan Windows 11 benzeri masaüstü simülasyonu: pencereler, Başlat menüsü, Dosya Gezgini, Not Defteri, Hesap Makinesi, Paint, Terminal ve daha fazlası.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='2' width='14' height='12' rx='3' fill='%234cc2ff'/%3E%3Crect x='3' y='4' width='10' height='2' rx='1' fill='%23fff'/%3E%3Crect x='3' y='7.5' width='10' height='4.5' rx='1' fill='%23fff' fill-opacity='.45'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css">
+  <title>VirtualMOS</title>
+  <meta name="description" content="VirtualMOS: MehburOS temalı, tarayıcıda çalışan sanal masaüstü. Yakında.">
+  <meta name="theme-color" content="#05090C">
+  <link rel="icon" type="image/png" href="assets/brand/mehburos-icon-32.png">
+  <style>
+    /* Geçici "yakında" sayfası — Faz 1'de gerçek uygulamayla değişecek */
+    :root {
+      --bg: #05090C;
+      --panel: #0E161B;
+      --cyan: #2DE2F5;
+      --cyan-soft: #8AF3FF;
+      --text: #E6FCFF;
+      --muted: #8FA9B0;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html, body { height: 100%; }
+    body {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 24px 16px;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 60% 45% at 50% 40%, rgba(45, 226, 245, .14), transparent 70%),
+        linear-gradient(rgba(45, 226, 245, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45, 226, 245, .05) 1px, transparent 1px);
+      background-size: auto, 40px 40px, 40px 40px;
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+      text-align: center;
+    }
+    main { max-width: 560px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+    .logo {
+      width: 140px; height: 140px; border-radius: 30px;
+      box-shadow: 0 0 40px rgba(45, 226, 245, .35), 0 0 0 1px rgba(45, 226, 245, .25);
+      animation: glow 3s ease-in-out infinite;
+    }
+    @keyframes glow { 50% { box-shadow: 0 0 70px rgba(45, 226, 245, .55), 0 0 0 1px rgba(45, 226, 245, .4); } }
+    h1 {
+      font-size: clamp(40px, 9vw, 64px); font-weight: 700; letter-spacing: .02em;
+      color: var(--cyan-soft);
+      text-shadow: 0 0 8px var(--cyan), 0 0 28px rgba(45, 226, 245, .6);
+    }
+    .badge {
+      padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--cyan); border: 1px solid rgba(45, 226, 245, .5); background: rgba(45, 226, 245, .08);
+    }
+    p { color: var(--muted); line-height: 1.6; font-size: 16px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 6px; }
+    a.btn, button.btn {
+      font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none;
+      padding: 10px 18px; border-radius: 10px; border: 1px solid rgba(45, 226, 245, .45);
+      color: var(--text); background: var(--panel); transition: background .2s, box-shadow .2s;
+    }
+    a.btn.primary { background: var(--cyan); color: var(--bg); border-color: var(--cyan); }
+    a.btn:hover, button.btn:hover { box-shadow: 0 0 18px rgba(45, 226, 245, .4); }
+    a.btn:focus-visible, button.btn:focus-visible { outline: 2px solid var(--cyan-soft); outline-offset: 3px; }
+    footer { margin-top: 18px; font-size: 12px; color: var(--muted); opacity: .8; }
+    @media (prefers-reduced-motion: reduce) { .logo { animation: none; } }
+  </style>
 </head>
 <body>
-  <!-- Açılış ekranı -->
-  <div id="boot" class="screen">
-    <div class="logo big"></div>
-    <div class="spinner"></div>
-  </div>
-
-  <!-- Kilit ekranı -->
-  <div id="lock" class="screen hidden">
-    <div class="lock-clock">
-      <div id="lockTime"></div>
-      <div id="lockDate"></div>
+  <main>
+    <img class="logo" src="assets/brand/mehburos-icon-256.png" alt="MehburOS logosu" width="140" height="140">
+    <span class="badge" data-i18n="badge">Yakında</span>
+    <h1>VirtualMOS</h1>
+    <p data-i18n="text">MehburOS temalı, tarayıcıda çalışan sanal masaüstü. Pencereler, dosyalar, uygulamalar ve MehburMC Launcher — kurulum gerektirmeden bilgisayarda, tablette ve telefonda.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://github.com/virtualmos/virtualmos.github.io/blob/main/docs/yol-haritasi.md" target="_blank" rel="noopener" data-i18n="roadmap">Yol haritası</a>
+      <a class="btn" href="https://mehbur07.github.io/" target="_blank" rel="noopener" data-i18n="other">Diğer projeler</a>
+      <button class="btn" type="button" id="lang" aria-label="Switch to English">EN</button>
     </div>
-    <div class="lock-hint">Kilidi açmak için tıklayın veya bir tuşa basın</div>
-    <div class="login hidden">
-      <div class="avatar">👤</div>
-      <div class="username"></div>
-      <button id="signIn" class="btn accent">Masaüstünü aç</button>
-      <small>Şifre gerekmez — bu bir simülasyondur.</small>
-    </div>
-    <div class="lock-foot">Win11 Web · Eğitim amaçlı bir simülasyondur, Microsoft ile bağlantılı değildir.</div>
-  </div>
-
-  <!-- Masaüstü -->
-  <div id="desktop" class="hidden">
-    <div id="icons"></div>
-    <div id="snapHint"></div>
-    <div id="windows"></div>
-
-    <div id="ctxmenu" class="menu hidden"></div>
-
-    <!-- Başlat menüsü -->
-    <div id="startmenu" class="flyout hidden">
-      <div class="sm-search"><span>🔍</span><input id="smSearch" placeholder="Uygulama, ayar ve belge arayın" autocomplete="off"></div>
-      <div class="sm-section">
-        <div class="sm-head"><b>Sabitlenmiş</b></div>
-        <div class="sm-grid" id="smGrid"></div>
-      </div>
-      <div class="sm-section">
-        <div class="sm-head"><b>Önerilenler</b></div>
-        <div class="sm-rec" id="smRec"></div>
-      </div>
-      <div class="sm-foot">
-        <div class="sm-user"><span class="avatar sm">👤</span><span class="username"></span></div>
-        <button id="powerBtn" class="icon-btn" title="Güç">⏻</button>
-        <div id="powerMenu" class="menu hidden">
-          <button data-p="lock">🔒 Kilitle</button>
-          <button data-p="restart">🔄 Yeniden başlat</button>
-          <button data-p="off">⏻ Kapat</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hızlı ayarlar -->
-    <div id="quick" class="flyout hidden">
-      <div class="q-grid">
-        <button class="q-tile on" data-q="wifi"><span>📶</span>Wi-Fi</button>
-        <button class="q-tile on" data-q="bt"><span>🔷</span>Bluetooth</button>
-        <button class="q-tile" data-q="plane"><span>✈️</span>Uçak modu</button>
-        <button class="q-tile" data-q="night"><span>🌙</span>Gece ışığı</button>
-        <button class="q-tile" data-q="theme"><span>🌓</span>Tema</button>
-        <button class="q-tile" data-q="focus"><span>🎯</span>Odaklan</button>
-      </div>
-      <label class="q-slider"><span>☀️</span><input type="range" id="qBright" min="30" max="100"></label>
-      <label class="q-slider"><span>🔊</span><input type="range" id="qVol" min="0" max="100" value="60"></label>
-      <div class="q-foot"><span id="qBattery">🔋 %100</span><button class="icon-btn" id="qSettings" title="Tüm ayarlar">⚙️</button></div>
-    </div>
-
-    <!-- Takvim -->
-    <div id="calendar" class="flyout hidden"></div>
-
-    <div id="toasts"></div>
-
-    <!-- Görev çubuğu -->
-    <div id="taskbar">
-      <div class="tb-left"><button class="tb-btn widget" id="widgetBtn" title="Hava durumu">⛅ <span>18°C</span></button></div>
-      <div class="tb-center">
-        <button class="tb-btn" id="startBtn" title="Başlat"><span class="logo"></span></button>
-        <button class="tb-btn" id="searchBtn" title="Ara">🔍</button>
-        <div id="tbApps"></div>
-      </div>
-      <div class="tb-right">
-        <button class="tb-btn tray" id="trayBtn" title="Hızlı ayarlar"><span class="lang">TUR</span> 📶 🔊 🔋</button>
-        <button class="tb-btn clock" id="clockBtn" title="Takvim"><span id="tbTime"></span><span id="tbDate"></span></button>
-        <button id="showDesktop" title="Masaüstünü göster"></button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Kapalı ekran -->
-  <div id="off" class="screen hidden">
-    <button id="powerOn" title="Başlat">⏻</button>
-    <p>Bilgisayar kapatıldı. Başlatmak için düğmeye basın.</p>
-  </div>
-
-  <!-- Parlaklık ve gece ışığı katmanları -->
-  <div id="night"></div>
-  <div id="dim"></div>
-
-  <script src="app.js"></script>
+    <footer>© 2026 Mehbur07</footer>
+  </main>
+  <script>
+    // Basit TR/EN geçişi; seçim tarayıcıda hatırlanır
+    const T = {
+      tr: { badge: 'Yakında', text: 'MehburOS temalı, tarayıcıda çalışan sanal masaüstü. Pencereler, dosyalar, uygulamalar ve MehburMC Launcher — kurulum gerektirmeden bilgisayarda, tablette ve telefonda.', roadmap: 'Yol haritası', other: 'Diğer projeler' },
+      en: { badge: 'Coming soon', text: 'A MehburOS-themed virtual desktop that runs in your browser. Windows, files, apps and the MehburMC Launcher — no installation, on computers, tablets and phones.', roadmap: 'Roadmap', other: 'Other projects' }
+    };
+    const btn = document.getElementById('lang');
+    function setLang(l) {
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = T[l][el.dataset.i18n]; });
+      btn.textContent = l === 'tr' ? 'EN' : 'TR';
+      btn.setAttribute('aria-label', l === 'tr' ? 'Switch to English' : 'Türkçeye geç');
+      try { localStorage.setItem('vmos:lang', l); } catch (e) { /* depolama kapalıysa sorun değil */ }
+    }
+    let saved = null;
+    try { saved = localStorage.getItem('vmos:lang'); } catch (e) { /* yok say */ }
+    const browserLang = (navigator.language || 'tr').toLowerCase().startsWith('tr') ? 'tr' : 'en';
+    setLang(saved === 'tr' || saved === 'en' ? saved : browserLang);
+    btn.addEventListener('click', () => setLang(document.documentElement.lang === 'tr' ? 'en' : 'tr'));
+  </script>
 </body>
 </html>
