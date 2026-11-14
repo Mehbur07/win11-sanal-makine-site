@@ -2,6 +2,19 @@
 
 ### [2026-11-14 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Proje baştan yazılacak: ad **VirtualMOS**, MehburOS teması (neon camgöbeği + siyah), giriş ekranı yok, adres `virtualmos.github.io`
+  - Teknik karar: Vite + React + TypeScript + pnpm; ESLint/Prettier, Vitest, Playwright, GitHub Actions
+  - Cihaz önceliği %45 PC / %45 tablet / %10 telefon; TR + EN; cihaz klasörüne kaydetme kalıyor; yeni uygulama MehburMC Launcher
+  - `docs/virtualmos-roadmap`: 8 fazlık yol haritası `docs/yol-haritasi.md`
+- **Son Commit:** 22bb5f3 Merge pull request #3 from Mehbur07/fix/smartscreen-false-positive
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı "başla" deyince Faz 0: açık soruları sor, `virtualmos` organizasyonunun açılmasını iste, repoyu (onayla) taşı ve yeniden adlandır
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Kullanıcı açıkça "başla" demeden yeniden yazıma başlanmayacak
+  - Repo taşıma (transfer) onay gerektiren işlem
+
+### [2026-11-14 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Microsoft Defender SmartScreen siteyi "kimlik avı (phishing)" diye işaretledi; sitede şifre alanı yok, büyük olasılıkla Windows logosuna ve oturum açma ekranına benzerlik yüzünden yanlış alarm
   - `fix/smartscreen-false-positive`: dört kareli logo (favicon, açılış, Başlat düğmesi, 404) kendi "pencere" simgemizle değiştirildi
   - Kilit ekranındaki "Oturum aç" düğmesi "Masaüstünü aç" oldu; 404 metninde "Windows" yerine "Win11 Web" yazıyor

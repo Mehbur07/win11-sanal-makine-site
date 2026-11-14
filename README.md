@@ -4,6 +4,8 @@ Tarayıcıda çalışan, Windows 11 görünümünde bir masaüstü simülasyonu.
 
 🔗 **Canlı sürüm:** https://mehbur07.github.io/win11-sanal-makine-site/
 
+> 🚧 **Yeniden yazılıyor:** Bu proje **VirtualMOS** adıyla, MehburOS temasında baştan yazılacak. Plan ve fazlar için [yol haritası](docs/yol-haritasi.md).
+
 > Bu proje eğitim amaçlı bir arayüz simülasyonudur, gerçek bir sanal makine değildir ve Microsoft ile bağlantılı değildir. Windows, Microsoft Corporation'ın ticari markasıdır.
 
 ## Özellikler
