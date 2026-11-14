@@ -33,7 +33,7 @@ Windows işlemleri (pencereler, uygulamalar, Dosya Gezgini) tamamen sitede çal�
 | 📁 **Cihazımda klasör** | Seçtiğiniz konumda (ör. Belgeler) `Win11 Web` adlı gerçek bir klasör oluşturulur. Not Defteri, Paint ve Dosya Gezgini'ndeki her şey bu klasörde gerçek dosya/klasör olarak durur; telefonun veya bilgisayarın dosya yöneticisinden de görülebilir. | Chrome, Edge, Opera (bilgisayar) ve Android Chrome |
 | 🌐 **Tarayıcıda** | Dosyalar yine bu cihazda, tarayıcının siteye ayırdığı özel alanda (OPFS, yoksa IndexedDB) saklanır. Dosya Gezgini'ndeki **⬇️ İndir** ile cihazın İndirilenler klasörüne alınabilir. | Tüm modern tarayıcılar (iPhone/iPad Safari ve Firefox dahil) |
 
-- Klasör izni tarayıcı tarafından hatırlanmazsa, sonraki ziyarette **Oturum aç** düğmesine basınca tekrar sorulur.
+- Klasör izni tarayıcı tarafından hatırlanmazsa, sonraki ziyarette **Masaüstünü aç** düğmesine basınca tekrar sorulur.
 - Dosya Gezgini'ndeki **⬆️ Cihazdan ekle** ile telefondaki/bilgisayardaki dosyalar (ör. galerideki resimler) klasöre kopyalanır.
 - Klasöre dışarıdan (dosya yöneticisiyle) eklenen dosyaları görmek için Dosya Gezgini'nde **⟳ Yenile**'ye basın.
 - **Sıfırla** yalnızca tarayıcıdaki verileri siler; cihazdaki `Win11 Web` klasörüne dokunmaz.

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Sayfa bulunamadı — Win11 Web</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='8.5' y='1' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='1' y='8.5' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='8.5' y='8.5' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='2' width='14' height='12' rx='3' fill='%234cc2ff'/%3E%3Crect x='3' y='4' width='10' height='2' rx='1' fill='%23fff'/%3E%3Crect x='3' y='7.5' width='10' height='4.5' rx='1' fill='%23fff' fill-opacity='.45'/%3E%3C/svg%3E">
   <!--
     404 sayfası: GitHub Pages, sitede olmayan bir adrese gidildiğinde bunu gösterir.
     Sayfa her derinlikte (ör. /win11-sanal-makine-site/a/b/c) açılabileceği için
@@ -118,8 +118,10 @@
     }
     .taskbar a { width: 40px; height: 40px; border-radius: 5px; display: grid; place-items: center; text-decoration: none; font-size: 20px; }
     .taskbar a:hover { background: var(--hover); }
-    .logo { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: 20px; height: 20px; }
-    .logo i { border-radius: 2px; background: linear-gradient(135deg, #7fdcff, #1f8fff); }
+    .logo { position: relative; display: inline-block; width: 22px; height: 18px; border-radius: 5px; background: linear-gradient(135deg, #7fdcff, #1f8fff); }
+    .logo::before, .logo::after { content: ""; position: absolute; left: 15%; right: 15%; border-radius: 2px; background: #fff; }
+    .logo::before { top: 17%; height: 16%; }
+    .logo::after { top: 45%; bottom: 17%; opacity: .45; }
     .clock { position: absolute; right: 12px; font-size: 12px; text-align: right; line-height: 1.35; }
 
     @media (prefers-reduced-motion: reduce) { .win, .code { animation: none; } }
@@ -163,7 +165,7 @@
       <div class="content">
         <p class="code" aria-hidden="true">404</p>
         <h1 id="t404">Sayfa bulunamadı</h1>
-        <p class="body" id="d404">Windows bu konumu bulamıyor. Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir; adı doğru yazdığınızdan emin olun.</p>
+        <p class="body" id="d404">Win11 Web bu konumu bulamıyor. Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir; adı doğru yazdığınızdan emin olun.</p>
         <div class="path" id="path"><b>Konum:</b> <span id="where">bilinmiyor</span></div>
         <a class="btn primary" href="/win11-sanal-makine-site/">🖥️ Masaüstüne dön</a>
 
@@ -180,7 +182,7 @@
   </main>
 
   <nav class="taskbar" aria-label="Görev çubuğu">
-    <a href="/win11-sanal-makine-site/" title="Win11 Web'i aç" aria-label="Win11 Web'i aç"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span></a>
+    <a href="/win11-sanal-makine-site/" title="Win11 Web'i aç" aria-label="Win11 Web'i aç"><span class="logo" aria-hidden="true"></span></a>
     <a href="/win11-sanal-makine-site/" title="Dosya Gezgini" aria-label="Dosya Gezgini">📁</a>
     <a href="https://github.com/Mehbur07/win11-sanal-makine-site" target="_blank" rel="noopener" title="Kaynak Kodu" aria-label="Kaynak Kodu">💻</a>
     <div class="clock" id="clock" aria-hidden="true"></div>

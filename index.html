@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Win11 Web</title>
   <meta name="description" content="Tarayıcıda çalışan Windows 11 benzeri masaüstü simülasyonu: pencereler, Başlat menüsü, Dosya Gezgini, Not Defteri, Hesap Makinesi, Paint, Terminal ve daha fazlası.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='8.5' y='1' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='1' y='8.5' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3Crect x='8.5' y='8.5' width='6.5' height='6.5' rx='1' fill='%234cc2ff'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='2' width='14' height='12' rx='3' fill='%234cc2ff'/%3E%3Crect x='3' y='4' width='10' height='2' rx='1' fill='%23fff'/%3E%3Crect x='3' y='7.5' width='10' height='4.5' rx='1' fill='%23fff' fill-opacity='.45'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Açılış ekranı -->
   <div id="boot" class="screen">
-    <div class="logo big"><i></i><i></i><i></i><i></i></div>
+    <div class="logo big"></div>
     <div class="spinner"></div>
   </div>
 
@@ -25,7 +25,7 @@
     <div class="login hidden">
       <div class="avatar">👤</div>
       <div class="username"></div>
-      <button id="signIn" class="btn accent">Oturum aç</button>
+      <button id="signIn" class="btn accent">Masaüstünü aç</button>
       <small>Şifre gerekmez — bu bir simülasyondur.</small>
     </div>
     <div class="lock-foot">Win11 Web · Eğitim amaçlı bir simülasyondur, Microsoft ile bağlantılı değildir.</div>
@@ -85,7 +85,7 @@
     <div id="taskbar">
       <div class="tb-left"><button class="tb-btn widget" id="widgetBtn" title="Hava durumu">⛅ <span>18°C</span></button></div>
       <div class="tb-center">
-        <button class="tb-btn" id="startBtn" title="Başlat"><span class="logo"><i></i><i></i><i></i><i></i></span></button>
+        <button class="tb-btn" id="startBtn" title="Başlat"><span class="logo"></span></button>
         <button class="tb-btn" id="searchBtn" title="Ara">🔍</button>
         <div id="tbApps"></div>
       </div>

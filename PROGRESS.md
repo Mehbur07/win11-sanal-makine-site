@@ -1,5 +1,16 @@
 # PROGRESS
 
+### [2026-11-14 - Mehbur07]
+- **Yapılanlar & Kararlar:**
+  - Microsoft Defender SmartScreen siteyi "kimlik avı (phishing)" diye işaretledi; sitede şifre alanı yok, büyük olasılıkla Windows logosuna ve oturum açma ekranına benzerlik yüzünden yanlış alarm
+  - `fix/smartscreen-false-positive`: dört kareli logo (favicon, açılış, Başlat düğmesi, 404) kendi "pencere" simgemizle değiştirildi
+  - Kilit ekranındaki "Oturum aç" düğmesi "Masaüstünü aç" oldu; 404 metninde "Windows" yerine "Win11 Web" yazıyor
+- **Son Commit:** 848c0bc Merge pull request #2 from Mehbur07/feature/404-page
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** SmartScreen uyarı sayfasından "Bu sitenin tehdit içermediğini bildir" ile yanlış alarm bildirimi yapmak ve birkaç gün sonra uyarının kalkıp kalkmadığını kontrol etmek
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Yeni özellik eklerken Microsoft logosu, Microsoft hesabı girişi veya şifre/PIN kutusu gibi gerçek giriş ekranını taklit eden öğeler eklenmemeli (yeniden işaretlenme riski)
+
 ### [2026-11-11 - Mehbur07]
 - **Yapılanlar & Kararlar:**
   - `feature/404-page`: kök dizine bağımsız `404.html` (GitHub Pages proje sitesi için kendi 404'ünü kullanır)

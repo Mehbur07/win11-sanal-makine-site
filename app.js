@@ -369,7 +369,7 @@ async function initStorage() {
       const label = store.get('storageLabel', ROOT_FOLDER);
       const perm = await h.queryPermission({ mode: 'readwrite' }).catch(() => 'denied');
       if (perm === 'granted') return useBackend(new HandleBackend(h, 'device', label));
-      // İzin yeniden istenmeli; bu yalnızca bir tıklamayla yapılabilir → "Oturum aç"ta istenir
+      // İzin yeniden istenmeli; bu yalnızca bir tıklamayla yapılabilir → "Masaüstünü aç" düğmesinde istenir
       pendingHandle = { h, label };
       return;
     }
@@ -1567,7 +1567,7 @@ function initSettings(w, b, arg) {
         <div class="st-card"><div>📊 Tarayıcı alanı kullanımı<small class="st-usage">Hesaplanıyor…</small></div></div>`,
       accounts: `<h2>Hesaplar</h2>
         <div class="st-card"><div>👤 Kullanıcı adı<small>Kilit ekranında ve Başlat menüsünde görünür</small></div><input type="text" maxlength="24" value="${esc(settings.user)}" data-s="user"></div>
-        <div class="st-card"><div>🔑 Oturum açma seçenekleri<small>Bu simülasyonda şifre kullanılmaz</small></div><span style="color:var(--muted)">Şifresiz</span></div>`,
+        <div class="st-card"><div>🔑 Giriş seçenekleri<small>Bu simülasyonda şifre kullanılmaz</small></div><span style="color:var(--muted)">Şifresiz</span></div>`,
       time: `<h2>Saat ve dil</h2>
         <div class="st-card"><div>🕒 Geçerli saat<small>Cihazınızın saatinden alınır</small></div><span>${new Date().toLocaleString('tr-TR')}</span></div>
         <div class="st-card"><div>🌍 Saat dilimi</div><span>${esc(Intl.DateTimeFormat().resolvedOptions().timeZone || '-')}</span></div>
@@ -1680,7 +1680,7 @@ async function signIn() {
   } catch (e) {
     console.error(e);
   } finally {
-    btn.textContent = 'Oturum aç';
+    btn.textContent = 'Masaüstünü aç';
     signingIn = false;
   }
   show('#desktop');
