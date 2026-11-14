@@ -8,6 +8,8 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react';
 import { useI18n } from '../i18n/context.ts';
+import { StorageGate } from '../storage/StorageGate.tsx';
+import { StorageProvider } from '../storage/StorageProvider.tsx';
 import { ContextMenu, type ContextMenuItem } from './ContextMenu.tsx';
 import { DesktopIcons } from './DesktopIcons.tsx';
 import { METRICS } from './device.ts';
@@ -32,9 +34,11 @@ export function Desktop({ onRestart }: { onRestart: () => void }) {
   const mode = useDeviceMode();
   return (
     <NotificationProvider>
-      <WindowManagerProvider mode={mode}>
-        <DesktopShell onRestart={onRestart} />
-      </WindowManagerProvider>
+      <StorageProvider>
+        <WindowManagerProvider mode={mode}>
+          <DesktopShell onRestart={onRestart} />
+        </WindowManagerProvider>
+      </StorageProvider>
     </NotificationProvider>
   );
 }
@@ -193,6 +197,7 @@ function DesktopShell({ onRestart }: { onRestart: () => void }) {
       )}
 
       {!popover && <Toasts />}
+      <StorageGate />
       <Panel open={popover} onToggle={togglePopover} />
     </div>
   );

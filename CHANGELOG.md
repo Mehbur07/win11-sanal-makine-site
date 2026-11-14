@@ -6,6 +6,8 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yapısına uyar.
 ## [Unreleased]
 
 ### Eklendi
+- Dosyalar uygulaması: klasörler arasında gezinme, yeni klasör ve metin dosyası, kopyala/kes/yapıştır, yeniden adlandırma, Çöp Kutusu'ndan geri yükleme, cihazdan dosya/klasör ekleme (sürükle-bırak dahil), indirme ve resim/metin önizleme.
+- İlk açılışta dosyaların nerede saklanacağı soruluyor: cihazda gerçek bir "VirtualMOS" klasörü ya da tarayıcının bu cihazdaki alanı. Eski Win11 Web klasörü içe aktarılabiliyor.
 - Masaüstü kabuğu: sürüklenip boyutlandırılabilen, kenara yaslanabilen pencereler; alt panel, aramalı uygulama menüsü, bildirimler, saat/takvim, hızlı ayarlar (dil, açık/koyu tema, tam ekran) ve sağ tık / uzun basma menüsü.
 - Tablette büyük dokunma alanları ve iki uygulamayı yan yana açma; telefonda uygulamalar tam ekran açılıyor ve masaüstü ana ekran gibi davranıyor. Klavye kısayolları ve "Hakkında" uygulaması eklendi.
 - VirtualMOS'un ilk hali: MehburOS logolu açılış animasyonu ve ardından MehburOS duvar kâğıtlı masaüstü; Türkçe/İngilizce dil düğmesi (seçim hatırlanır).

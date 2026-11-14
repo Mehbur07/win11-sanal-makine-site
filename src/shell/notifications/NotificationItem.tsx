@@ -17,10 +17,10 @@ export function NotificationItem({
       <Bell className="notif__icon" aria-hidden="true" />
       <div className="notif__text">
         <header>
-          <strong>{t(item.titleKey)}</strong>
+          <strong>{t(item.titleKey, item.vars)}</strong>
           <time dateTime={item.time.toISOString()}>{time}</time>
         </header>
-        {item.bodyKey && <p>{t(item.bodyKey)}</p>}
+        {item.bodyKey && <p>{t(item.bodyKey, item.vars)}</p>}
       </div>
       <button
         type="button"

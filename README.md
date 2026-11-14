@@ -6,8 +6,21 @@ MehburOS temalı, tarayıcıda çalışan sanal masaüstü. Kurulum gerektirmede
 
 🔗 **Adres:** https://virtualmos.github.io/
 
-> 🚧 **Durum:** Faz 2 (masaüstü kabuğu) tamamlandı: pencereler, panel, uygulama menüsü, bildirimler, hızlı ayarlar, tablet ve telefon modları.
-> Uygulamaların içi sonraki fazlarda geliyor. Plan için: [yol haritası](docs/yol-haritasi.md).
+> 🚧 **Durum:** Faz 3 tamamlandı: masaüstü kabuğu + Dosyalar uygulaması ve cihaza kaydetme.
+> Diğer uygulamalar sonraki fazlarda geliyor. Plan için: [yol haritası](docs/yol-haritasi.md).
+
+## Dosyalar nerede saklanır?
+
+Pencereler ve uygulamalar tamamen sitede çalışır; oluşturduğun dosyalar ise cihazına yazılır. İlk açılışta sorulur, sonradan **Dosyalar → Konumu değiştir** ile değiştirilebilir (eski yerdeki dosyalar yeni yere kopyalanır).
+
+| Seçenek | Nasıl çalışır | Tarayıcılar |
+|---|---|---|
+| 📁 **Cihazımda klasör** | Seçtiğin yerde (ör. Belgeler) `VirtualMOS` adlı gerçek bir klasör oluşturulur; dosyalar cihazın dosya yöneticisinde de görünür | Chrome, Edge, Opera (bilgisayar), Android Chrome |
+| 🌐 **Tarayıcıda** | Dosyalar bu cihazda, tarayıcının siteye ayırdığı alanda (OPFS, yoksa IndexedDB) durur; **İndir** ile cihaza alınır | Tüm modern tarayıcılar (iPhone/iPad ve Firefox dahil) |
+
+- Tarayıcı klasör iznini unutursa açılışta **İzin ver** penceresi çıkar.
+- Silinen öğeler `.trash` adlı gizli klasöre (Çöp Kutusu) gider; oradan geri yüklenebilir.
+- Eski **Win11 Web** dosyaların için: Dosyalar → **Win11 Web'den aktar** → eski `Win11 Web` klasörünü seç.
 
 ## Kullanım ipuçları
 
@@ -66,7 +79,10 @@ Elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.git
 | `src/shell/wm/` | Pencere yöneticisi: durum (`reducer.ts`), konum hesapları (`geometry.ts`), pencere bileşeni |
 | `src/shell/panel/` | Alt panel, uygulama menüsü, hızlı ayarlar, takvim |
 | `src/shell/notifications/` | Bildirimler ve köşede beliren bildirim kutuları |
-| `src/apps/` | Uygulamalar ve uygulama listesi (`registry.ts`); şimdilik "Hakkında" ve "yakında" penceresi |
+| `src/apps/` | Uygulamalar ve uygulama listesi (`registry.ts`) |
+| `src/apps/files/` | Dosyalar uygulaması |
+| `src/storage/` | Depolama katmanı: cihaz klasörü/OPFS (`handleBackend.ts`), IndexedDB/bellek (`recordBackend.ts`), dosya işlemleri (`fileOps.ts`), yer seçimi (`manager.ts`) |
+| `src/shell/dialog/` | Soru ve onay pencereleri |
 | `src/settings/` | Tema (açık/koyu) seçimi |
 | `src/i18n/` | Türkçe/İngilizce metinler ve dil seçimi |
 | `src/styles/tokens.css` | Tema renkleri ve ölçüleri (MehburOS renkleri) |

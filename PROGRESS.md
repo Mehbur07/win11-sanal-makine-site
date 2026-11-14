@@ -2,6 +2,24 @@
 
 ### [2026-11-14 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Faz 3 (`feature/phase-3-storage-files`): depolama katmanı `src/storage/` — `StorageBackend` arayüzü; `HandleBackend` (cihaz klasörü + OPFS), `RecordBackend` (IndexedDB + bellek, içerik ArrayBuffer olarak); üst düzey işlemler `fileOps.ts`
+  - Cihaz klasörü: seçilen yerde `VirtualMOS` klasörü (seçilen klasörün adı zaten VirtualMOS ise o kullanılır); tutamak `vmos-kv` IndexedDB'de; tercih `vmos:storage`
+  - Çöp kutusu `.trash/<kimlik>/<öğe>` + `.meta.json` (eski yol); '.' ile başlayan adlar gizli ve yasak
+  - Konum değişince `mergeInto` ile eksik dosyalar yeni yere kopyalanıyor (var olanların üzerine yazılmıyor)
+  - Dosyalar uygulaması + önizleme + ortak diyaloglar (`src/shell/dialog/`); dar pencerede container query ile sade düzen
+  - Yeni dev bağımlılık: `fake-indexeddb` (yalnızca testler); testler: 72 birim, Playwright 35 geçti / 13 cihaza özel atlandı
+- **Son Commit:** 411568e Merge pull request #7 from virtualmos/feature/phase-2-desktop-shell
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı "başla" deyince Faz 4 (metin düzenleyici, hesap makinesi, çizim, fotoğraflar, terminal, tarayıcı, ayarlar — Ayarlar'a depolama konumu da taşınacak)
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Gerçek klasör seçme penceresi otomatik testte açılamıyor; testte OPFS klasörüyle taklit ediliyor. Gerçek cihazda (Chrome PC, Android Chrome) elle denenmeli
+  - Klasör indirme (zip) yok; yalnızca dosyalar indiriliyor
+  - Taşıma/yeniden adlandırma kopyala+sil ile yapılıyor; çok büyük klasörlerde yavaş olabilir
+  - `pnpm audit`: minimatch (yalnızca ESLint içinde) orta seviye bulgu devam ediyor
+  - Kullanıcı "başla" demeden bir sonraki faza geçilmeyecek
+
+### [2026-11-14 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Faz 2 (`feature/phase-2-desktop-shell`): pencere yöneticisi (reducer + saf geometri fonksiyonları, sürükle/boyutlandır/yasla/önizleme, çift tık/dokunuşla büyüt), alt panel, aramalı uygulama menüsü, bildirimler + köşe bildirimleri, saat/takvim, hızlı ayarlar, sağ tık/uzun basma menüsü, masaüstü simgeleri
   - Cihaz modu `device.ts`: kısa kenar < 600 px → telefon, dokunmatik → tablet, değilse bilgisayar; tablette "yan yana" düğmesi, telefonda tam ekran uygulamalar ve ana ekran ızgarası
   - Açık tema eklendi (`vmos:theme`); uygulama simgeleri iki temada da koyu neon kare
