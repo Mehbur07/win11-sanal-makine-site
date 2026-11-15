@@ -1,0 +1,35 @@
+.editor {
+  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.editor__area {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  line-height: 1.55;
+  tab-size: 4;
+  caret-color: var(--accent);
+}
+
+.editor__area::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.editor__size {
+  min-width: 22px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}

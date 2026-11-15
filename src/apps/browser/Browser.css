@@ -1,0 +1,172 @@
+.browser {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.browser__bar .tool {
+  text-decoration: none;
+}
+
+.browser__bar a.tool[aria-disabled='true'] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.browser__address {
+  flex: 1;
+  min-width: 120px;
+}
+
+.browser__address input,
+.browser__search input {
+  width: 100%;
+  height: var(--hit);
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.browser__address input:focus,
+.browser__search:focus-within {
+  box-shadow: 0 0 0 2px var(--glow);
+}
+
+.browser__hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--warning) 12%, transparent);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.browser__hint > svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  color: var(--warning);
+}
+
+.browser__hint span {
+  flex: 1;
+}
+
+.browser__hint button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.browser__hint button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.browser__frame {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  background: #fff;
+}
+
+.browser__home {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 16px;
+  overflow: auto;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 20%, var(--glow-soft), transparent 70%), var(--bg);
+}
+
+.browser__home img {
+  border-radius: 20px;
+  box-shadow: 0 0 30px var(--glow);
+}
+
+.browser__home h2 {
+  margin: 0;
+  color: var(--accent-soft);
+  text-shadow: var(--neon-text);
+}
+
+.browser__search {
+  position: relative;
+  width: min(520px, 100%);
+}
+
+.browser__search svg {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+  transform: translateY(-50%);
+}
+
+.browser__search input {
+  height: 46px;
+  padding-left: 42px;
+  font-size: 15px;
+}
+
+.browser__tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+  width: min(620px, 100%);
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.browser__tiles button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.browser__tiles button:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px var(--glow-soft);
+}
+
+.browser__tile-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid;
+  border-radius: 12px;
+  background: var(--bg);
+  font-size: 20px;
+  font-weight: 700;
+}

@@ -50,6 +50,8 @@ import {
 import { HandleBackend } from '../../storage/handleBackend.ts';
 import { validateName } from '../../storage/names.ts';
 import { StorageChooser } from '../../storage/StorageChooser.tsx';
+import { WithBackend } from '../../storage/WithBackend.tsx';
+import { appForFile } from '../openWith.ts';
 import { StorageError, type Entry, type Path, type StorageBackend } from '../../storage/types.ts';
 import { setClip, useClip } from './clipboard.ts';
 import { downloadBlob, fileType, formatDate, formatSize, TYPE_ICON } from './fileTypes.ts';
@@ -80,45 +82,7 @@ const PLACES: { path: Path; icon: LucideIcon; labelKey?: 'files.home' }[] = [
 
 // Dosyalar uygulaması. Depolama hazır değilse önce yer seçtirir ya da izin ister.
 export function Files() {
-  const { t } = useI18n();
-  const storage = useStorage();
-  const [choosing, setChoosing] = useState(false);
-  const { status } = storage;
-
-  if (status.state === 'ready') return <FileBrowser backend={status.backend} />;
-
-  return (
-    <div className="files-gate">
-      <FolderOpen aria-hidden="true" />
-      {status.state === 'loading' && <p role="status">{t('storage.loading')}</p>}
-      {status.state === 'choose' && (
-        <>
-          <p>{t('files.needStorage')}</p>
-          <button type="button" className="btn primary" onClick={() => setChoosing(true)}>
-            {t('files.chooseStorage')}
-          </button>
-        </>
-      )}
-      {status.state === 'permission' && (
-        <>
-          <p>{t('storage.permission.text', { name: status.folderName })}</p>
-          <button type="button" className="btn primary" onClick={() => storage.grantAccess()}>
-            {t('storage.permission.grant')}
-          </button>
-        </>
-      )}
-      {status.state === 'error' && (
-        <p className="field__error">{t('storage.error', { message: status.message })}</p>
-      )}
-      {choosing && (
-        <StorageChooser
-          scope="window"
-          onDone={() => setChoosing(false)}
-          onCancel={() => setChoosing(false)}
-        />
-      )}
-    </div>
-  );
+  return <WithBackend>{(backend) => <FileBrowser backend={backend} />}</WithBackend>;
 }
 
 function sortEntries(list: Entry[], locale: string): Entry[] {
@@ -280,7 +244,13 @@ function FileBrowser({ backend }: { backend: StorageBackend }) {
     if (!dir) return;
     const entry = entries?.find((e) => e.name === name);
     if (!entry) return;
-    if (entry.kind === 'dir') navigate({ kind: 'dir', path: [...dir, name] });
+    if (entry.kind === 'dir') {
+      navigate({ kind: 'dir', path: [...dir, name] });
+      return;
+    }
+    // Metin → Metin Düzenleyici, resim → Fotoğraflar; diğerleri önizleme/indirme
+    const app = appForFile(name);
+    if (app) wm.open(app, { path: [...dir, name] });
     else setDialog({ type: 'preview', path: [...dir, name] });
   }
 

@@ -1,0 +1,62 @@
+.terminal {
+  height: 100%;
+  background: #030608;
+  color: #d6f7fb;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: text;
+}
+
+.terminal__out {
+  height: 100%;
+  padding: 10px 14px;
+  overflow: auto;
+}
+
+.terminal__line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.terminal__line--muted {
+  color: #6f8a91;
+}
+
+.terminal__line--accent {
+  color: var(--accent);
+}
+
+.terminal__line--error {
+  color: #ff6b86;
+}
+
+.terminal__line--art {
+  color: var(--accent);
+  white-space: pre;
+  text-shadow: 0 0 6px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.terminal__input-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.terminal__prompt {
+  flex: none;
+  color: #3cf59a;
+  white-space: nowrap;
+}
+
+.terminal__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  caret-color: var(--accent);
+}

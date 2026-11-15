@@ -90,14 +90,18 @@ test('klasör oluştur, dosya ekle, önizle, yeniden adlandır, kopyala-yapışt
   await expect(item(win, 'not.txt')).toBeVisible();
   await expect(win.getByText('1 dosya eklendi')).toBeVisible();
 
-  // Önizleme
+  // Aç
   await item(win, 'not.txt').locator('.file-item__main').click();
   if (info.project.name === 'pc') {
     await win.getByRole('button', { name: 'Aç' }).click();
   }
-  const preview = page.getByRole('dialog', { name: 'not.txt' });
-  await expect(preview.getByText('VirtualMOS deneme notu')).toBeVisible();
-  await preview.getByRole('button', { name: 'Kapat' }).click();
+  // Metin dosyası Metin Düzenleyici'de açılır
+  const editor = page.getByRole('dialog', { name: 'not.txt — Metin Düzenleyici' });
+  await expect(editor.getByRole('textbox', { name: 'Metin' })).toHaveValue(
+    'VirtualMOS deneme notu',
+  );
+  await editor.getByRole('button', { name: 'Kapat' }).click();
+  await expect(editor).toHaveCount(0);
 
   // Seç → yeniden adlandır
   const select = async (name: string) => {

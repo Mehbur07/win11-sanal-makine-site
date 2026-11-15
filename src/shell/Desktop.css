@@ -45,6 +45,38 @@
   }
 }
 
+/* Hazır duvar kâğıtları (Ayarlar → Görünüm) */
+.desktop[data-wallpaper='grid'] {
+  background:
+    radial-gradient(
+      ellipse 70% 50% at 50% 100%,
+      color-mix(in srgb, var(--accent) 35%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(color-mix(in srgb, var(--accent) 12%, transparent) 1px, transparent 1px) 0 0 /
+      44px 44px,
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 12%, transparent) 1px, transparent 1px)
+      0 0 / 44px 44px,
+    #05090c;
+}
+
+.desktop[data-wallpaper='aurora'] {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(45, 226, 245, 0.45), transparent 70%),
+    radial-gradient(ellipse 50% 45% at 80% 25%, rgba(255, 45, 170, 0.38), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 55% 85%, rgba(60, 245, 154, 0.3), transparent 70%), #05090c;
+}
+
+.desktop[data-wallpaper='midnight'] {
+  background: linear-gradient(160deg, #0b1d33 0%, #05090c 55%, #160a1f 100%);
+}
+
+.desktop[data-wallpaper='custom'] {
+  background-color: #05090c;
+  background-size: cover;
+  background-position: center;
+}
+
 /* Pencere katmanı kendi içinde sıralanır; menüler her zaman pencerelerin üstünde kalır */
 .desktop .wm-layer {
   z-index: 1;
@@ -102,11 +134,11 @@
 }
 
 .desktop-icon:hover {
-  background: rgba(45, 226, 245, 0.08);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 .desktop-icon[data-selected='true'] {
-  background: rgba(45, 226, 245, 0.18);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
   border-color: var(--border-strong);
 }
 

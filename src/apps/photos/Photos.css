@@ -1,0 +1,123 @@
+.photos {
+  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  outline: none;
+  background: #030608;
+}
+
+.photos__count {
+  margin-left: auto;
+  padding: 0 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.photos__view {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.photos__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+.photos__nav {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: var(--surface-glass);
+  backdrop-filter: blur(10px);
+  color: var(--text);
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.photos__nav:hover {
+  opacity: 1;
+  box-shadow: 0 0 16px var(--glow);
+}
+
+.photos__nav--prev {
+  left: 12px;
+}
+
+.photos__nav--next {
+  right: 12px;
+}
+
+.photos__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.photos__empty svg {
+  width: 44px;
+  height: 44px;
+  color: var(--border-strong);
+}
+
+.photos__empty p {
+  margin: 0;
+}
+
+.photos__strip {
+  display: flex;
+  gap: 6px;
+  flex: none;
+  margin: 0;
+  padding: 8px;
+  overflow-x: auto;
+  list-style: none;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.photos__strip button {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 52px;
+  padding: 2px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: var(--bg);
+  color: #7cf5b4;
+  cursor: pointer;
+}
+
+.photos__strip button[aria-current='true'] {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.photos__strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+}

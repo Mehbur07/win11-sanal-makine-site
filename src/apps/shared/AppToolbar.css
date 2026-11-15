@@ -1,0 +1,89 @@
+/* Uygulamaların ortak üst araç çubuğu ve alt durum çubuğu */
+.app-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.app-toolbar .tool,
+.app-toolbar__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: none;
+  min-width: var(--hit);
+  height: var(--hit);
+  padding: 0 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.app-toolbar .tool svg {
+  width: 17px;
+  height: 17px;
+  color: var(--accent);
+}
+
+.app-toolbar .tool:hover:not(:disabled) {
+  background: var(--glow-soft);
+  border-color: var(--border);
+}
+
+.app-toolbar .tool[aria-pressed='true'] {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border-color: var(--border-strong);
+}
+
+.app-toolbar .tool:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.app-toolbar__sep {
+  flex: none;
+  width: 1px;
+  height: 22px;
+  margin: 0 6px;
+  background: var(--border);
+}
+
+.app-status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: none;
+  min-height: 28px;
+  padding: 4px 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.app-status__msg {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--accent-soft);
+}
+
+/* Dar pencerede yalnızca simgeler */
+@container (max-width: 560px) {
+  .app-toolbar .tool__label {
+    display: none;
+  }
+}

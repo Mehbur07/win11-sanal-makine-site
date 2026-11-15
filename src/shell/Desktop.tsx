@@ -8,6 +8,7 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react';
 import { useI18n } from '../i18n/context.ts';
+import { useTheme } from '../settings/theme.ts';
 import { StorageGate } from '../storage/StorageGate.tsx';
 import { StorageProvider } from '../storage/StorageProvider.tsx';
 import { ContextMenu, type ContextMenuItem } from './ContextMenu.tsx';
@@ -48,6 +49,7 @@ function DesktopShell({ onRestart }: { onRestart: () => void }) {
   const wm = useWM();
   const { notify } = useNotifications();
   const fullscreen = useFullscreen();
+  const { wallpaper, customWallpaperUrl } = useTheme();
   const [popover, setPopover] = useState<PanelPopover | null>(null);
   const [menuAt, setMenuAt] = useState<{ x: number; y: number } | null>(null);
   const longPress = useRef<{ timer: number; x: number; y: number } | null>(null);
@@ -84,7 +86,7 @@ function DesktopShell({ onRestart }: { onRestart: () => void }) {
           wm.minimizeAll();
           break;
         case 'KeyQ':
-          if (id) wm.close(id);
+          if (id) wm.requestClose(id);
           break;
         case 'ArrowUp':
           if (id) wm.toggleMax(id);
@@ -163,6 +165,12 @@ function DesktopShell({ onRestart }: { onRestart: () => void }) {
     <div className="shell" data-mode={wm.mode} data-testid="desktop" style={style}>
       <main
         className="desktop"
+        data-wallpaper={wallpaper}
+        style={
+          customWallpaperUrl
+            ? { backgroundImage: `url(${JSON.stringify(customWallpaperUrl)})` }
+            : undefined
+        }
         aria-label={t('desktop.label')}
         onContextMenu={(e) => {
           if (!isBackground(e.target)) return;

@@ -3,7 +3,7 @@
 **VirtualMOS** (Virtual MehburOS), MehburOS'un tarayıcıda çalışan sanal masaüstüdür.
 Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazılacak.
 
-> Durum: **Faz 3 tamamlandı.** Faz 4, kullanıcı "başla" dediğinde başlar.
+> Durum: **Faz 4 tamamlandı.** Faz 5, kullanıcı "başla" dediğinde başlar.
 > Her faz ayrı branch + PR ile ilerler; her fazın sonunda canlı sitede kontrol edilip onay alınır.
 
 ## Alınan kararlar
@@ -58,16 +58,16 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 ### Faz 3 — Depolama ve Dosyalar
 - [x] Depolama katmanı yeniden yazıldı: cihaz klasörü (`VirtualMOS` adlı) → OPFS → IndexedDB → (son çare) bellek
 - [x] Eski "Win11 Web" klasörünü içe aktarma ("Win11 Web'den aktar" / "Klasör içe aktar")
-- [x] İlk açılışta "Dosyalar nerede saklansın?" seçimi; izin düşerse "İzin ver" penceresi; konum Dosyalar'dan değiştirilir (Ayarlar'a Faz 4'te eklenecek), değişince dosyalar yeni yere kopyalanır
+- [x] İlk açılışta "Dosyalar nerede saklansın?" seçimi; izin düşerse "İzin ver" penceresi; konum Dosyalar'dan ve Ayarlar → Depolama'dan değiştirilir, değişince dosyalar yeni yere kopyalanır
 - [x] Dosyalar uygulaması: klasörler, yeni klasör/metin dosyası, kopyala/kes/yapıştır, yeniden adlandır, çöp kutusu (geri yükle/kalıcı sil/boşalt), cihazdan ekle, sürükle-bırak, indir, resim/metin önizleme, ızgara/liste görünümü, klavye kısayolları, dokunmatikte seçim dairesi ve uzun basma
 - [x] Depolama için birim testleri (aynı testler bellekte ve IndexedDB'de) + tarayıcı testleri (OPFS ve cihaz klasörü yolu)
 
 **Bitiş ölçütü:** Dosyalar sayfa yenilenince ve tarayıcı kapanınca korunuyor.
 
 ### Faz 4 — Temel uygulamalar
-- [ ] Metin düzenleyici, Hesap makinesi, Çizim, Fotoğraflar
-- [ ] Terminal (MehburOS komutlarıyla), Web tarayıcı, Ayarlar (tema, duvar kâğıdı, dil, depolama)
-- [ ] Her uygulama için en az bir tarayıcı testi
+- [x] Metin düzenleyici, Hesap makinesi, Çizim, Fotoğraflar
+- [x] Terminal (MehburOS komutlarıyla), Web tarayıcı, Ayarlar (tema, duvar kâğıdı, dil, depolama)
+- [x] Her uygulama için en az bir tarayıcı testi
 
 **Bitiş ölçütü:** Win11 Web'deki tüm özellikler yeni tasarımla çalışıyor.
 

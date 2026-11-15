@@ -74,7 +74,7 @@ describe('App', () => {
     expect(within(menu).queryByRole('button', { name: 'Dosyalar' })).toBeNull();
 
     fireEvent.keyDown(input, { key: 'Enter' });
-    expect(screen.getByText('Hesap Makinesi yakında')).toBeTruthy();
+    expect(screen.getByTestId('calc-display').textContent).toBe('0');
   });
 
   it('panel düğmesi pencereyi küçültür ve geri getirir', () => {

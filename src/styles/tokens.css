@@ -48,3 +48,64 @@
   --glow-soft: rgba(10, 165, 181, 0.12);
   --neon-text: 0 0 12px rgba(10, 165, 181, 0.35);
 }
+
+/* Vurgu rengi (Ayarlar → Görünüm). Koyu ve açık tema için ayrı tonlar. */
+:root[data-accent='magenta'] {
+  --accent: #ff2daa;
+  --accent-soft: #ff8fd2;
+  --border: rgba(255, 45, 170, 0.22);
+  --border-strong: rgba(255, 45, 170, 0.45);
+  --glow: rgba(255, 45, 170, 0.45);
+  --glow-soft: rgba(255, 45, 170, 0.14);
+  --neon-text: 0 0 8px #ff2daa, 0 0 28px rgba(255, 45, 170, 0.6);
+}
+
+:root[data-accent='amber'] {
+  --accent: #ffc25a;
+  --accent-soft: #ffe0a3;
+  --border: rgba(255, 194, 90, 0.22);
+  --border-strong: rgba(255, 194, 90, 0.45);
+  --glow: rgba(255, 194, 90, 0.45);
+  --glow-soft: rgba(255, 194, 90, 0.14);
+  --neon-text: 0 0 8px #ffc25a, 0 0 28px rgba(255, 194, 90, 0.6);
+}
+
+:root[data-accent='green'] {
+  --accent: #3cf59a;
+  --accent-soft: #a6ffd2;
+  --border: rgba(60, 245, 154, 0.22);
+  --border-strong: rgba(60, 245, 154, 0.45);
+  --glow: rgba(60, 245, 154, 0.45);
+  --glow-soft: rgba(60, 245, 154, 0.14);
+  --neon-text: 0 0 8px #3cf59a, 0 0 28px rgba(60, 245, 154, 0.6);
+}
+
+:root[data-theme='light'][data-accent='magenta'] {
+  --accent: #c8107f;
+  --accent-soft: #a50d69;
+  --border: rgba(200, 16, 127, 0.25);
+  --border-strong: rgba(200, 16, 127, 0.5);
+  --glow: rgba(200, 16, 127, 0.3);
+  --glow-soft: rgba(200, 16, 127, 0.1);
+  --neon-text: none;
+}
+
+:root[data-theme='light'][data-accent='amber'] {
+  --accent: #b57400;
+  --accent-soft: #8f5c00;
+  --border: rgba(181, 116, 0, 0.25);
+  --border-strong: rgba(181, 116, 0, 0.5);
+  --glow: rgba(181, 116, 0, 0.3);
+  --glow-soft: rgba(181, 116, 0, 0.1);
+  --neon-text: none;
+}
+
+:root[data-theme='light'][data-accent='green'] {
+  --accent: #0f9a5a;
+  --accent-soft: #0b7a47;
+  --border: rgba(15, 154, 90, 0.25);
+  --border-strong: rgba(15, 154, 90, 0.5);
+  --glow: rgba(15, 154, 90, 0.3);
+  --glow-soft: rgba(15, 154, 90, 0.1);
+  --neon-text: none;
+}

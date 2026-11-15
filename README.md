@@ -6,12 +6,12 @@ MehburOS temalı, tarayıcıda çalışan sanal masaüstü. Kurulum gerektirmede
 
 🔗 **Adres:** https://virtualmos.github.io/
 
-> 🚧 **Durum:** Faz 3 tamamlandı: masaüstü kabuğu + Dosyalar uygulaması ve cihaza kaydetme.
-> Diğer uygulamalar sonraki fazlarda geliyor. Plan için: [yol haritası](docs/yol-haritasi.md).
+> 🚧 **Durum:** Faz 4 tamamlandı: masaüstü kabuğu, Dosyalar ve temel uygulamalar (metin düzenleyici, hesap makinesi, çizim, fotoğraflar, terminal, tarayıcı, ayarlar).
+> MehburMC Launcher demosu sonraki fazda geliyor. Plan için: [yol haritası](docs/yol-haritasi.md).
 
 ## Dosyalar nerede saklanır?
 
-Pencereler ve uygulamalar tamamen sitede çalışır; oluşturduğun dosyalar ise cihazına yazılır. İlk açılışta sorulur, sonradan **Dosyalar → Konumu değiştir** ile değiştirilebilir (eski yerdeki dosyalar yeni yere kopyalanır).
+Pencereler ve uygulamalar tamamen sitede çalışır; oluşturduğun dosyalar ise cihazına yazılır. İlk açılışta sorulur, sonradan **Ayarlar → Depolama** ya da **Dosyalar → Konumu değiştir** ile değiştirilebilir (eski yerdeki dosyalar yeni yere kopyalanır).
 
 | Seçenek | Nasıl çalışır | Tarayıcılar |
 |---|---|---|
@@ -30,6 +30,19 @@ Pencereler ve uygulamalar tamamen sitede çalışır; oluşturduğun dosyalar is
 | Tablet | Aynı sürükleme dokunmatikle de çalışır; pencere başlığındaki **yan yana** düğmesi sola/sağa yaslar |
 | Telefon | Uygulamalar tam ekran açılır; masaüstü ana ekran gibi tüm uygulamaları gösterir |
 | Klavye | `Alt+M` menü, `Alt+Q` kapat, `Alt+↑` büyüt, `Alt+←/→` yasla, `Alt+↓` küçült, `Alt+D` masaüstü, `Esc` menüyü kapat |
+
+## Uygulamalar
+
+| Uygulama | Ne yapar |
+|---|---|
+| Dosyalar | Klasörler, kopyala/kes/yapıştır, Çöp Kutusu, cihazdan ekleme, indirme, önizleme |
+| Metin Düzenleyici | Metin dosyası yazar, kaydeder (`Ctrl+S`); Dosyalar'dan çift tıkla açılır |
+| Hesap Makinesi | Dört işlem, yüzde, klavyeden kullanım |
+| Çizim | Kalem, silgi, şekiller, boya kovası; PNG olarak Resimler'e kaydeder |
+| Fotoğraflar | Resimler klasöründeki fotoğrafları gösterir, aralarında gezinir |
+| Terminal | MehburOS komutları: `help`, `ls`, `cd`, `cat`, `mkdir`, `open`, `theme`, `neofetch`… |
+| Tarayıcı | Siteleri pencere içinde açar (izin vermeyen siteler ↗ ile gerçek tarayıcıda açılır) |
+| Ayarlar | Tema, vurgu rengi, duvar kâğıdı, dil ve dosyaların saklandığı yer |
 
 ## Neler olacak?
 
@@ -81,9 +94,10 @@ Elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.git
 | `src/shell/notifications/` | Bildirimler ve köşede beliren bildirim kutuları |
 | `src/apps/` | Uygulamalar ve uygulama listesi (`registry.ts`) |
 | `src/apps/files/` | Dosyalar uygulaması |
+| `src/apps/<uygulama>/` | Diğer uygulamalar: `editor`, `calculator`, `paint`, `photos`, `terminal`, `browser`, `settings`; ortak parçalar `shared/`, dosyayı uygun uygulamayla açma `openWith.ts` |
 | `src/storage/` | Depolama katmanı: cihaz klasörü/OPFS (`handleBackend.ts`), IndexedDB/bellek (`recordBackend.ts`), dosya işlemleri (`fileOps.ts`), yer seçimi (`manager.ts`) |
 | `src/shell/dialog/` | Soru ve onay pencereleri |
-| `src/settings/` | Tema (açık/koyu) seçimi |
+| `src/settings/` | Tema (açık/koyu), vurgu rengi ve duvar kâğıdı tercihleri |
 | `src/i18n/` | Türkçe/İngilizce metinler ve dil seçimi |
 | `src/styles/tokens.css` | Tema renkleri ve ölçüleri (MehburOS renkleri) |
 | `src/assets/wallpapers/` | Duvar kâğıtları (16:9 ve 4:3, WebP) |
