@@ -77,7 +77,10 @@ test('klasör oluştur, dosya ekle, önizle, yeniden adlandır, kopyala-yapışt
   await item(win, 'Ödevler').locator('.file-item__main').dblclick({ force: true });
   if (info.project.name === 'tablet') {
     // Dokunmatik arayüzde tek dokunuş açar; çift tık iki kez açmaya çalışabilir
-    await expect(win.getByRole('button', { name: 'Ödevler' })).toBeVisible();
+    // Yalnızca üstteki konum çubuğuna bakılır: liste yenilenene kadar ad birkaç yerde görünebilir
+    await expect(
+      win.getByRole('navigation', { name: 'Konum' }).getByRole('button', { name: 'Ödevler' }),
+    ).toBeVisible();
   }
   await expect(win.getByText('Bu klasör boş')).toBeVisible();
 

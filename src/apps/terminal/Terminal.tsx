@@ -31,10 +31,14 @@ function TerminalBody({ windowId, backend }: AppProps & { backend: StorageBacken
   const [cwd, setCwd] = useState<Path>([]);
   const [history, setHistory] = useState<string[]>([]);
   const [histIndex, setHistIndex] = useState<number | null>(null);
-  const [busy, setBusy] = useState(false);
   const [startedAt] = useState(() => Date.now());
   const inputRef = useRef<HTMLInputElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
+  // Komut kuyruğu: bir komut çalışırken basılan Enter kaybolmaz, sıraya girer.
+  // Konum ve geçmiş ref'te tutulur ki sıradaki komut bir öncekinin sonucunu görsün.
+  const queueRef = useRef<Promise<void>>(Promise.resolve());
+  const cwdRef = useRef<Path>([]);
+  const historyRef = useRef<string[]>([]);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ block: 'end' });
@@ -49,9 +53,9 @@ function TerminalBody({ windowId, backend }: AppProps & { backend: StorageBacken
       ? t('storage.where.device', { name: backend.rootName })
       : t('storage.where.opfs');
 
-  const io = (hist: string[]): ShellIO => ({
+  const io = (hist: string[], dir: Path = cwd): ShellIO => ({
     backend,
-    cwd,
+    cwd: dir,
     lang,
     history: hist,
     storageLabel,
@@ -62,28 +66,40 @@ function TerminalBody({ windowId, backend }: AppProps & { backend: StorageBacken
     closeWindow: () => wm.close(windowId),
   });
 
-  async function submit() {
-    const line = input;
-    const hist = line.trim() ? [...history, line] : history;
-    setHistory(hist);
-    setHistIndex(null);
-    setInput('');
-    setBusy(true);
-    const echo: OutLine = { text: `${prompt(cwd)} ${line}`, kind: 'muted' };
-    const result = await runCommand(line, io(hist));
-    setBusy(false);
-    if (result.clear) setLines([]);
-    else setLines((prev) => [...prev, ...withIds([echo, ...result.lines])]);
-    if (result.cwd) setCwd(result.cwd);
+  async function run(line: string, hist: string[]) {
+    const dir = cwdRef.current;
+    const echo: OutLine = { text: `${prompt(dir)} ${line}`, kind: 'muted' };
+    try {
+      const result = await runCommand(line, io(hist, dir));
+      if (result.clear) setLines([]);
+      else setLines((prev) => [...prev, ...withIds([echo, ...result.lines])]);
+      if (result.cwd) {
+        cwdRef.current = result.cwd;
+        setCwd(result.cwd);
+      }
+    } catch (err) {
+      // Beklenmeyen bir hata kuyruğu durdurmasın; ekrana yazılır, sıradaki komut çalışır
+      setLines((prev) => [...prev, ...withIds([echo, { text: String(err), kind: 'error' }])]);
+    }
     // Dosya değiştiren komutlardan sonra açık Dosyalar pencereleri yenilensin
     storage.changed();
     inputRef.current?.focus();
   }
 
+  function submit() {
+    const line = input;
+    const hist = line.trim() ? [...historyRef.current, line] : historyRef.current;
+    historyRef.current = hist;
+    setHistory(hist);
+    setHistIndex(null);
+    setInput('');
+    queueRef.current = queueRef.current.then(() => run(line, hist));
+  }
+
   async function onKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (!busy) submit();
+      submit();
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (history.length === 0) return;
