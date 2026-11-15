@@ -6,8 +6,8 @@ MehburOS temalı, tarayıcıda çalışan sanal masaüstü. Kurulum gerektirmede
 
 🔗 **Adres:** https://virtualmos.github.io/
 
-> 🚧 **Durum:** Faz 4 tamamlandı: masaüstü kabuğu, Dosyalar ve temel uygulamalar (metin düzenleyici, hesap makinesi, çizim, fotoğraflar, terminal, tarayıcı, ayarlar).
-> MehburMC Launcher demosu sonraki fazda geliyor. Plan için: [yol haritası](docs/yol-haritasi.md).
+> 🚧 **Durum:** Faz 5 tamamlandı: masaüstü kabuğu, Dosyalar, temel uygulamalar (metin düzenleyici, hesap makinesi, çizim, fotoğraflar, terminal, tarayıcı, ayarlar) ve MehburMC Launcher demosu.
+> Sırada cilalama (çevrimdışı çalışma, performans, gerçek cihaz testleri) var. Plan için: [yol haritası](docs/yol-haritasi.md).
 
 ## Dosyalar nerede saklanır?
 
@@ -43,6 +43,7 @@ Pencereler ve uygulamalar tamamen sitede çalışır; oluşturduğun dosyalar is
 | Terminal | MehburOS komutları: `help`, `ls`, `cd`, `cat`, `mkdir`, `open`, `theme`, `neofetch`… |
 | Tarayıcı | Siteleri pencere içinde açar (izin vermeyen siteler ↗ ile gerçek tarayıcıda açılır) |
 | Ayarlar | Tema, vurgu rengi, duvar kâğıdı, dil ve dosyaların saklandığı yer |
+| MehburMC Launcher | Gerçek launcher'ın arayüzünü taklit eden demo: profiller, haberler, yenilikler. En güncel sürüm GitHub Releases'ten okunur, Windows/Linux için gerçek indirme bağlantıları verilir. **Oyna** düğmesi demo olduğunu söyler (tarayıcıdan Minecraft başlatılamaz) |
 
 ## Neler olacak?
 
@@ -95,6 +96,7 @@ Elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.git
 | `src/apps/` | Uygulamalar ve uygulama listesi (`registry.ts`) |
 | `src/apps/files/` | Dosyalar uygulaması |
 | `src/apps/<uygulama>/` | Diğer uygulamalar: `editor`, `calculator`, `paint`, `photos`, `terminal`, `browser`, `settings`; ortak parçalar `shared/`, dosyayı uygun uygulamayla açma `openWith.ts` |
+| `src/apps/launcher/` | MehburMC Launcher demosu: sayfalar, sürüm bilgisi (`releases.ts`, GitHub Releases + 10 dk önbellek), profiller (`profiles.ts`), sürüm notu okuyucu (`notes.ts`) |
 | `src/storage/` | Depolama katmanı: cihaz klasörü/OPFS (`handleBackend.ts`), IndexedDB/bellek (`recordBackend.ts`), dosya işlemleri (`fileOps.ts`), yer seçimi (`manager.ts`) |
 | `src/shell/dialog/` | Soru ve onay pencereleri |
 | `src/settings/` | Tema (açık/koyu), vurgu rengi ve duvar kâğıdı tercihleri |

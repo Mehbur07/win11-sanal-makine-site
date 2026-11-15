@@ -1,5 +1,22 @@
 # PROGRESS
 
+### [2026-11-16 - Mehbur07]
+- **Yapılanlar & Kararlar:**
+  - Faz 4 (`feature/phase-4-apps`, PR #9 merge edildi): Metin Düzenleyici, Hesap Makinesi, Çizim, Fotoğraflar, Terminal, Tarayıcı, Ayarlar (depolama konumu dahil). CI'da çıkan iki hata düzeltildi: Terminal artık meşgulken basılan Enter'ı düşürmüyor, komutlar sıraya giriyor; Dosyalar testindeki belirsiz seçici konum çubuğuna daraltıldı. Tablette Kapat düğmesi köşe tutamağının üstüne alındı
+  - Faz 5 (`feature/phase-5-launcher`): MehburMC Launcher demosu `src/apps/launcher/`; gerçek launcher'ın menü sırası ve renkleri (`.mmc` altında, her zaman koyu, vurgu #00f0ff). Demo sayfaları: Ana sayfa, Profiller, Hesaplar, Launcher'ı edin, Yenilikler; diğerleri kilitli
+  - Sürüm bilgisi `Mehbur07/MehburMC-Launcher` GitHub Releases API'sinden; localStorage önbelleği 10 dk (`vmos:mmc:releases`), hata olursa eski önbellek, o da yoksa releases sayfasına bağlantı. Windows `_x64-setup.exe` normal sürümde, Linux `_amd64.deb` ayrı `-linux` sürümünde; yalnızca `https://github.com/` bağlantıları kabul ediliyor
+  - Profiller `vmos:mmc:profiles` içinde; sürüm notları HTML basılmadan kendi küçük okuyucumuzla (`notes.ts`) gösteriliyor
+  - Testler: 108 birim test; Playwright 69 geçti / 18 cihaza özel atlandı (launcher testlerinde GitHub API taklit ediliyor)
+- **Son Commit:** 05274c9 Merge pull request #9 from virtualmos/feature/phase-4-apps
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı "başla" deyince Faz 6 (PWA/çevrimdışı, performans ve erişilebilirlik denetimi, gerçek cihaz testleri)
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - GitHub API oturumsuz kullanımda saatte 60 istekle sınırlı; önbellek bunu karşılıyor, sınır aşılırsa launcher GitHub sayfasına bağlantı gösteriyor
+  - `ComingSoon` bileşeni artık hiçbir uygulamada kullanılmıyor (ileride silinebilir)
+  - Tablette pencerenin sağ üst köşesinden boyutlandırma alanı Kapat düğmesi yüzünden biraz küçüldü
+  - `pnpm audit` / Dependabot: minimatch (yalnızca ESLint içinde) orta seviye bulgu devam ediyor
+  - Kullanıcı "başla" demeden bir sonraki faza geçilmeyecek
+
 ### [2026-11-14 - Mehbur07]
 - **Yapılanlar & Kararlar:**
   - Faz 3 (`feature/phase-3-storage-files`): depolama katmanı `src/storage/` — `StorageBackend` arayüzü; `HandleBackend` (cihaz klasörü + OPFS), `RecordBackend` (IndexedDB + bellek, içerik ArrayBuffer olarak); üst düzey işlemler `fileOps.ts`
