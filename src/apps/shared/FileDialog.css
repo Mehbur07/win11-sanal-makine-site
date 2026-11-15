@@ -1,0 +1,70 @@
+.file-dialog__path {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  overflow: hidden;
+}
+
+.file-dialog__path span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-dialog__path .btn {
+  flex: none;
+  padding: 0 10px;
+}
+
+.file-dialog__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: min(260px, 40vh);
+  margin: 0;
+  padding: 6px;
+  overflow: auto;
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+
+.file-dialog__list button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--hit, 32px);
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.file-dialog__list button svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+.file-dialog__list button:hover {
+  background: var(--glow-soft);
+}
+
+.file-dialog__list button[aria-pressed='true'] {
+  background: color-mix(in srgb, var(--accent) 17%, transparent);
+  border-color: var(--border-strong);
+}
+
+.file-dialog__empty {
+  padding: 16px;
+  color: var(--muted);
+  text-align: center;
+}

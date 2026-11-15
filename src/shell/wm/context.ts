@@ -1,5 +1,5 @@
 import { createContext, useContext, type RefObject } from 'react';
-import type { AppId } from '../../apps/types.ts';
+import type { AppArgs, AppId } from '../../apps/types.ts';
 import type { DeviceMode } from '../device.ts';
 import type { Rect, Size, Snap } from './geometry.ts';
 import type { WinState } from './reducer.ts';
@@ -15,10 +15,16 @@ export interface WMValue {
   /** Sürüklerken gösterilen yaslama önizlemesi */
   preview: Snap;
   setPreview: (snap: Snap) => void;
-  open: (appId: AppId) => void;
+  open: (appId: AppId, args?: AppArgs) => void;
   /** Panel düğmesi davranışı: aç / öne getir / küçült */
   activate: (appId: AppId) => void;
+  /** Hemen kapatır */
   close: (id: string) => void;
+  /** Kaydedilmemiş değişiklik varsa önce sorar */
+  requestClose: (id: string) => void;
+  cancelClose: (id: string) => void;
+  setTitle: (id: string, title: string | undefined) => void;
+  setDirty: (id: string, dirty: boolean) => void;
   focus: (id: string) => void;
   minimize: (id: string) => void;
   restore: (id: string) => void;

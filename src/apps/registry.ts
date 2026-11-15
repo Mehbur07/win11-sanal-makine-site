@@ -1,15 +1,22 @@
 import {
-  Calculator,
+  Calculator as CalculatorIcon,
   FileText,
   Folder,
   Globe,
   Image,
   Info,
   Palette,
-  Settings,
+  Settings as SettingsIcon,
   SquareTerminal,
 } from 'lucide-react';
 import { About } from './about/About.tsx';
+import { Browser } from './browser/Browser.tsx';
+import { Calculator } from './calculator/Calculator.tsx';
+import { Editor } from './editor/Editor.tsx';
+import { Paint } from './paint/Paint.tsx';
+import { Photos } from './photos/Photos.tsx';
+import { Settings } from './settings/Settings.tsx';
+import { Terminal } from './terminal/Terminal.tsx';
 import { ComingSoon } from './coming-soon/ComingSoon.tsx';
 import { Files } from './files/Files.tsx';
 import type { AppDefinition, AppId } from './types.ts';
@@ -40,18 +47,16 @@ export const APPS: Record<AppId, AppDefinition> = {
     icon: FileText,
     color: '#8AF3FF',
     size: { w: 680, h: 480 },
-    component: ComingSoon,
-    comingInPhase: 4,
+    component: Editor,
   },
   calculator: {
     id: 'calculator',
     titleKey: 'app.calculator',
-    icon: Calculator,
+    icon: CalculatorIcon,
     color: '#FF2DAA',
     size: { w: 340, h: 500 },
     single: true,
-    component: ComingSoon,
-    comingInPhase: 4,
+    component: Calculator,
   },
   paint: {
     id: 'paint',
@@ -59,8 +64,7 @@ export const APPS: Record<AppId, AppDefinition> = {
     icon: Palette,
     color: '#FF7AD0',
     size: { w: 760, h: 540 },
-    component: ComingSoon,
-    comingInPhase: 4,
+    component: Paint,
   },
   photos: {
     id: 'photos',
@@ -69,8 +73,7 @@ export const APPS: Record<AppId, AppDefinition> = {
     color: '#7CF5B4',
     size: { w: 720, h: 520 },
     single: true,
-    component: ComingSoon,
-    comingInPhase: 4,
+    component: Photos,
   },
   terminal: {
     id: 'terminal',
@@ -78,8 +81,7 @@ export const APPS: Record<AppId, AppDefinition> = {
     icon: SquareTerminal,
     color: '#7CF5B4',
     size: { w: 640, h: 400 },
-    component: ComingSoon,
-    comingInPhase: 4,
+    component: Terminal,
   },
   browser: {
     id: 'browser',
@@ -87,18 +89,16 @@ export const APPS: Record<AppId, AppDefinition> = {
     icon: Globe,
     color: '#2DE2F5',
     size: { w: 900, h: 600 },
-    component: ComingSoon,
-    comingInPhase: 4,
+    component: Browser,
   },
   settings: {
     id: 'settings',
     titleKey: 'app.settings',
-    icon: Settings,
+    icon: SettingsIcon,
     color: '#8FA9B0',
     size: { w: 760, h: 540 },
     single: true,
-    component: ComingSoon,
-    comingInPhase: 4,
+    component: Settings,
   },
   mehburmc: {
     id: 'mehburmc',

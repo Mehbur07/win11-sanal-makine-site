@@ -71,7 +71,7 @@
 }
 
 .panel__task[data-active='true'] {
-  background: rgba(45, 226, 245, 0.16);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
 }
 
 /* Açık uygulama göstergesi: altta küçük neon çizgi */

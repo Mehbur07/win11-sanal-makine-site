@@ -1,0 +1,249 @@
+.settings {
+  position: relative;
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100%;
+}
+
+.settings__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px;
+  border-right: 1px solid var(--border);
+  overflow: auto;
+}
+
+.settings__nav button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: var(--hit);
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.settings__nav button svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.settings__nav button:hover {
+  background: var(--glow-soft);
+}
+
+.settings__nav button[aria-current='page'] {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent-soft);
+  font-weight: 600;
+}
+
+.settings__page {
+  min-width: 0;
+  padding: 20px 24px;
+  overflow: auto;
+}
+
+.settings__page h2 {
+  margin: 0 0 16px;
+  font-size: 22px;
+}
+
+.settings__page h3 {
+  margin: 22px 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.settings__hint {
+  margin: 12px 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.settings__choices,
+.settings__wallpapers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.theme-card,
+.wallpaper-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.theme-card[aria-checked='true'],
+.wallpaper-card[aria-checked='true'] {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 0 16px var(--glow-soft);
+}
+
+.theme-card__preview,
+.wallpaper-card__preview {
+  display: block;
+  height: 72px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.theme-card--dark .theme-card__preview {
+  background: linear-gradient(#0e161b 0 70%, #152128 70%), #05090c;
+}
+
+.theme-card--light .theme-card__preview {
+  background: linear-gradient(#ffffff 0 70%, #dff6fa 70%), #eefcfe;
+}
+
+/* Duvar kâğıdı önizlemesi: masaüstüyle aynı CSS sınıfını kullanır */
+.wallpaper-card__preview.desktop {
+  position: relative;
+  inset: auto;
+  animation: none;
+  background-size: cover;
+}
+
+.wallpaper-card__preview--custom {
+  display: grid;
+  place-items: center;
+  background: var(--bg) center / cover;
+  color: var(--muted);
+}
+
+.settings__accents {
+  display: flex;
+  gap: 12px;
+}
+
+.accent-dot {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: var(--dot);
+  color: #05090c;
+  cursor: pointer;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--dot) 50%, transparent);
+}
+
+.accent-dot[aria-checked='true'] {
+  border-color: var(--text);
+}
+
+.accent-dot svg {
+  width: 20px;
+  height: 20px;
+}
+
+.settings__list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 420px;
+}
+
+.settings__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.settings__option[aria-checked='true'] {
+  border-color: var(--accent);
+  color: var(--accent-soft);
+}
+
+.settings__option svg {
+  width: 18px;
+  height: 18px;
+}
+
+.settings__card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.settings__card > svg {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  color: var(--accent);
+}
+
+.settings__card img {
+  border-radius: 14px;
+}
+
+.settings__card p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.settings__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Dar pencere: menü üstte yatay sekmeler */
+@container (max-width: 600px) {
+  .settings {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .settings__nav {
+    flex-direction: row;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .settings__nav button {
+    flex: none;
+  }
+
+  .settings__page {
+    padding: 16px;
+  }
+}

@@ -43,7 +43,7 @@
 
 .storage-option[aria-pressed='true'] {
   border-color: var(--accent);
-  background: rgba(45, 226, 245, 0.12);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 .storage-option:disabled {

@@ -1,6 +1,6 @@
 import { useMemo, useReducer, useRef, useState, type ReactNode } from 'react';
 import { APPS } from '../../apps/registry.ts';
-import type { AppId } from '../../apps/types.ts';
+import type { AppArgs, AppId } from '../../apps/types.ts';
 import { METRICS, type DeviceMode } from '../device.ts';
 import { WMContext, type WMValue } from './context.ts';
 import { cascadeRect, type Size, type Snap } from './geometry.ts';
@@ -26,10 +26,10 @@ export function WindowManagerProvider({
   const focusedId = focused?.id ?? null;
 
   const value = useMemo<WMValue>(() => {
-    const open = (appId: AppId) => {
+    const open = (appId: AppId, args?: AppArgs) => {
       const app = APPS[appId];
       const rect = cascadeRect(state.windows.length, app.size, bounds);
-      dispatch({ type: 'open', appId, rect, single: app.single });
+      dispatch({ type: 'open', appId, rect, single: app.single, args });
     };
 
     return {
@@ -51,6 +51,10 @@ export function WindowManagerProvider({
         else dispatch({ type: 'focus', id: top.id });
       },
       close: (id) => dispatch({ type: 'close', id }),
+      requestClose: (id) => dispatch({ type: 'requestClose', id }),
+      cancelClose: (id) => dispatch({ type: 'cancelClose', id }),
+      setTitle: (id, title) => dispatch({ type: 'setTitle', id, title }),
+      setDirty: (id, dirty) => dispatch({ type: 'setDirty', id, dirty }),
       focus: (id) => dispatch({ type: 'focus', id }),
       minimize: (id) => dispatch({ type: 'minimize', id }),
       restore: (id) => dispatch({ type: 'restore', id }),

@@ -1,0 +1,109 @@
+.paint {
+  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  outline: none;
+}
+
+.paint__size {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.paint__size input {
+  width: 90px;
+  accent-color: var(--accent);
+}
+
+.paint__size span:last-child {
+  min-width: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.paint__palette {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.paint__swatch {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.paint__swatch[aria-checked='true'] {
+  border-color: var(--text);
+  box-shadow:
+    0 0 0 2px var(--surface),
+    0 0 0 4px var(--accent);
+}
+
+.paint__custom input {
+  width: 32px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.paint__stage {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  overflow: auto;
+  background:
+    repeating-conic-gradient(#0d1418 0 25%, #111b20 0 50%) 0 0 / 20px 20px,
+    var(--bg);
+}
+
+.paint__canvas-wrap {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  line-height: 0;
+}
+
+.paint__canvas {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100cqh - 24px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  /* Dokunmatikte çizerken sayfa kaymasın */
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.paint__canvas[data-tool='fill'] {
+  cursor: cell;
+}
+
+.paint__preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.paint__stage {
+  container-type: size;
+}

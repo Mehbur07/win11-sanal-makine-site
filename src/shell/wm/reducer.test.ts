@@ -90,3 +90,38 @@ describe('wmReducer', () => {
     expect(wmReducer(s, { type: 'restore', id: 'yok' })).toBe(s);
   });
 });
+
+describe('dosyayla açma ve kapatma onayı', () => {
+  it('aynı dosya ikinci kez açılınca yeni pencere açılmaz', () => {
+    const s = run(
+      { type: 'open', appId: 'editor', rect, args: { path: ['a.txt'] } },
+      { type: 'open', appId: 'editor', rect, args: { path: ['b.txt'] } },
+      { type: 'open', appId: 'editor', rect, args: { path: ['a.txt'] } },
+    );
+    expect(s.windows).toHaveLength(2);
+    expect(focusedWindow(s)?.args?.path).toEqual(['a.txt']);
+  });
+
+  it('tek pencereli uygulamaya yeni dosya verilince aynı pencerede açılır', () => {
+    const s = run(
+      { type: 'open', appId: 'photos', rect, single: true, args: { path: ['x.png'] } },
+      { type: 'open', appId: 'photos', rect, single: true, args: { path: ['y.png'] } },
+    );
+    expect(s.windows).toHaveLength(1);
+    expect(s.windows[0]?.args?.path).toEqual(['y.png']);
+  });
+
+  it('kaydedilmemiş değişiklik varsa önce sorar', () => {
+    let s = run(
+      { type: 'open', appId: 'editor', rect },
+      { type: 'setDirty', id: 'w1', dirty: true },
+      { type: 'requestClose', id: 'w1' },
+    );
+    expect(s.windows[0]?.confirmClose).toBe(true);
+    s = wmReducer(s, { type: 'cancelClose', id: 'w1' });
+    expect(s.windows[0]?.confirmClose).toBe(false);
+    s = wmReducer(s, { type: 'setDirty', id: 'w1', dirty: false });
+    s = wmReducer(s, { type: 'requestClose', id: 'w1' });
+    expect(s.windows).toHaveLength(0);
+  });
+});

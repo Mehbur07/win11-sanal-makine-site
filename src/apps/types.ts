@@ -14,10 +14,16 @@ export type AppId =
   | 'settings'
   | 'mehburmc';
 
+/** Uygulamaya açılırken verilen bilgiler (ör. açılacak dosyanın yolu) */
+export interface AppArgs {
+  path?: string[];
+}
+
 // Her uygulamanın pencere içinde aldığı bilgiler
 export interface AppProps {
   windowId: string;
   appId: AppId;
+  args?: AppArgs;
 }
 
 export interface AppDefinition {

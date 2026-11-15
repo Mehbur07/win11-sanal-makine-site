@@ -3,6 +3,7 @@ import { useEffect, useRef, type PointerEvent as ReactPointerEvent } from 'react
 import { AppIcon } from '../../apps/AppIcon.tsx';
 import { APPS } from '../../apps/registry.ts';
 import { useI18n } from '../../i18n/context.ts';
+import { ConfirmDialog } from '../dialog/ConfirmDialog.tsx';
 import { METRICS } from '../device.ts';
 import { useWM } from './context.ts';
 import {
@@ -41,7 +42,8 @@ export function Window({ win }: { win: WinState }) {
   const { t } = useI18n();
   const app = APPS[win.appId];
   const Body = app.component;
-  const title = t(app.titleKey);
+  const appTitle = t(app.titleKey);
+  const title = `${win.dirty ? '• ' : ''}${win.title ? `${win.title} — ${appTitle}` : appTitle}`;
   const { titleH } = METRICS[wm.mode];
   const phone = wm.mode === 'phone';
   const focused = wm.focusedId === win.id;
@@ -194,7 +196,7 @@ export function Window({ win }: { win: WinState }) {
             type="button"
             className="window__close"
             aria-label={t('window.close')}
-            onClick={() => wm.close(win.id)}
+            onClick={() => wm.requestClose(win.id)}
           >
             <X />
           </button>
@@ -202,7 +204,17 @@ export function Window({ win }: { win: WinState }) {
       </div>
 
       <div className="window__body">
-        <Body windowId={win.id} appId={win.appId} />
+        <Body windowId={win.id} appId={win.appId} args={win.args} />
+        {win.confirmClose && (
+          <ConfirmDialog
+            title={t('window.unsaved.title')}
+            text={t('window.unsaved.text')}
+            confirmLabel={t('window.unsaved.discard')}
+            danger
+            onCancel={() => wm.cancelClose(win.id)}
+            onConfirm={() => wm.close(win.id)}
+          />
+        )}
       </div>
 
       {!phone &&

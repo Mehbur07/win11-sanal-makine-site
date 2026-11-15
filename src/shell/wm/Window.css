@@ -79,7 +79,9 @@
   cursor: default;
 }
 
-.window[data-focused='false'] .window__titlebar {
+/* Soluklaştırma çocuklara uygulanır: başlık çubuğunun kendisine opacity verilirse yeni bir
+   katman oluşur ve düğmeler boyutlandırma tutamaklarının altında kalır */
+.window[data-focused='false'] .window__titlebar > * {
   opacity: 0.8;
 }
 
@@ -94,6 +96,9 @@
 }
 
 .window__buttons {
+  /* Tablette köşe tutamağı (32 px) Kapat düğmesini örtmesin: düğmeler tutamakların üstünde */
+  position: relative;
+  z-index: 3;
   display: flex;
   gap: 2px;
 }
@@ -126,6 +131,7 @@
 }
 
 .window__body {
+  position: relative;
   flex: 1;
   min-height: 0;
   overflow: auto;

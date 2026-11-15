@@ -1,4 +1,4 @@
-import type { AppId } from '../../apps/types.ts';
+import type { AppArgs, AppId } from '../../apps/types.ts';
 import type { Rect, Snap } from './geometry.ts';
 
 // Pencere yöneticisinin durumu. "reducer": mevcut durum + bir eylem → yeni durum.
@@ -13,6 +13,14 @@ export interface WinState {
   minimized: boolean;
   /** Üst üste binme sırası; büyük olan üstte */
   z: number;
+  /** Açılış bilgileri (ör. dosya yolu) */
+  args?: AppArgs;
+  /** Uygulamanın verdiği başlık (ör. dosya adı); yoksa uygulama adı */
+  title?: string;
+  /** Kaydedilmemiş değişiklik var mı (kapatırken sorulur) */
+  dirty?: boolean;
+  /** Kapatma onayı bekleniyor */
+  confirmClose?: boolean;
 }
 
 export interface WMState {
@@ -24,8 +32,13 @@ export interface WMState {
 export const initialWM: WMState = { windows: [], nextId: 1, zTop: 0 };
 
 export type WMAction =
-  | { type: 'open'; appId: AppId; rect: Rect; single?: boolean }
+  | { type: 'open'; appId: AppId; rect: Rect; single?: boolean; args?: AppArgs }
   | { type: 'close'; id: string }
+  /** Kaydedilmemiş değişiklik varsa önce sorar, yoksa kapatır */
+  | { type: 'requestClose'; id: string }
+  | { type: 'cancelClose'; id: string }
+  | { type: 'setTitle'; id: string; title: string | undefined }
+  | { type: 'setDirty'; id: string; dirty: boolean }
   | { type: 'focus'; id: string }
   | { type: 'minimize'; id: string }
   | { type: 'restore'; id: string }
@@ -62,9 +75,19 @@ function raise(state: WMState, id: string, extra: (w: WinState) => Partial<WinSt
 export function wmReducer(state: WMState, action: WMAction): WMState {
   switch (action.type) {
     case 'open': {
+      const key = action.args?.path?.join('/');
+      // Aynı dosya zaten açıksa o pencere öne gelir
+      if (key !== undefined) {
+        const same = state.windows.find(
+          (w) => w.appId === action.appId && w.args?.path?.join('/') === key,
+        );
+        if (same) return raise(state, same.id);
+      }
       if (action.single) {
         const existing = state.windows.find((w) => w.appId === action.appId);
-        if (existing) return raise(state, existing.id);
+        if (existing) {
+          return raise(state, existing.id, () => (action.args ? { args: action.args } : {}));
+        }
       }
       const zTop = state.zTop + 1;
       const win: WinState = {
@@ -74,11 +97,24 @@ export function wmReducer(state: WMState, action: WMAction): WMState {
         snap: null,
         minimized: false,
         z: zTop,
+        args: action.args,
       };
       return { windows: [...state.windows, win], nextId: state.nextId + 1, zTop };
     }
     case 'close':
       return { ...state, windows: state.windows.filter((w) => w.id !== action.id) };
+    case 'requestClose': {
+      const win = state.windows.find((w) => w.id === action.id);
+      if (!win) return state;
+      if (!win.dirty) return wmReducer(state, { type: 'close', id: action.id });
+      return raise(state, action.id, () => ({ confirmClose: true }));
+    }
+    case 'cancelClose':
+      return update(state, action.id, () => ({ confirmClose: false }));
+    case 'setTitle':
+      return update(state, action.id, () => ({ title: action.title }));
+    case 'setDirty':
+      return update(state, action.id, () => ({ dirty: action.dirty }));
     case 'focus': {
       const win = state.windows.find((w) => w.id === action.id);
       if (!win || (!win.minimized && win.z === state.zTop)) return state;
