@@ -3,7 +3,7 @@
 **VirtualMOS** (Virtual MehburOS), MehburOS'un tarayıcıda çalışan sanal masaüstüdür.
 Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazılacak.
 
-> Durum: **Faz 4 tamamlandı.** Faz 5, kullanıcı "başla" dediğinde başlar.
+> Durum: **Faz 5 tamamlandı.** Faz 6, kullanıcı "başla" dediğinde başlar.
 > Her faz ayrı branch + PR ile ilerler; her fazın sonunda canlı sitede kontrol edilip onay alınır.
 
 ## Alınan kararlar
@@ -72,9 +72,9 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 **Bitiş ölçütü:** Win11 Web'deki tüm özellikler yeni tasarımla çalışıyor.
 
 ### Faz 5 — MehburMC Launcher uygulaması
-- [ ] Gerçek MehburMC Launcher'ın arayüzünü taklit eden demo (sürüm seçimi, profil, haberler; "Oyna" düğmesi demo olduğunu söyler)
-- [ ] Sürüm bilgisi GitHub Releases'ten; Windows/Linux için gerçek indirme bağlantıları
-- [ ] Not: Tarayıcı içinden Minecraft başlatılamaz
+- [x] Gerçek MehburMC Launcher'ın arayüzünü taklit eden demo (sürüm seçimi, profil, haberler; "Oyna" düğmesi demo olduğunu söyler)
+- [x] Sürüm bilgisi GitHub Releases'ten; Windows/Linux için gerçek indirme bağlantıları
+- [x] Not: Tarayıcı içinden Minecraft başlatılamaz
 
 **Bitiş ölçütü:** Demo gerçek launcher gibi görünüyor; en güncel sürüm görülüp indirilebiliyor.
 

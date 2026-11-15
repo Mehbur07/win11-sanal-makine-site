@@ -17,8 +17,8 @@ import { Paint } from './paint/Paint.tsx';
 import { Photos } from './photos/Photos.tsx';
 import { Settings } from './settings/Settings.tsx';
 import { Terminal } from './terminal/Terminal.tsx';
-import { ComingSoon } from './coming-soon/ComingSoon.tsx';
 import { Files } from './files/Files.tsx';
+import { Launcher } from './launcher/Launcher.tsx';
 import type { AppDefinition, AppId } from './types.ts';
 
 // Tüm uygulamaların listesi. Yeni uygulama eklemek için buraya bir satır ekle.
@@ -107,8 +107,7 @@ export const APPS: Record<AppId, AppDefinition> = {
     color: '#2DE2F5',
     size: { w: 900, h: 580 },
     single: true,
-    component: ComingSoon,
-    comingInPhase: 5,
+    component: Launcher,
   },
 };
 
