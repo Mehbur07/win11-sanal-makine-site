@@ -3,7 +3,7 @@
 **VirtualMOS** (Virtual MehburOS), MehburOS'un tarayıcıda çalışan sanal masaüstüdür.
 Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazılacak.
 
-> Durum: **v1.0.0 yayında** (2026-11-16, [sürüm sayfası](https://github.com/virtualmos/virtualmos.github.io/releases/tag/v1.0.0)). Faz 7 tamam; geriye yalnızca Faz 6'daki gerçek cihaz testleri kaldı ([kontrol listesi](cihaz-testi.md)), bulgular 1.0.x sürümleriyle düzeltilir.
+> Durum: **v1.0.0 yayında** (2026-11-16, [sürüm sayfası](https://github.com/virtualmos/virtualmos.github.io/releases/tag/v1.0.0)). **Tüm fazlar tamam**; gerçek cihaz testlerinde hata çıkmadı. Bundan sonraki düzeltmeler 1.0.x, yeni özellikler 1.x sürümleriyle gelir.
 > Her faz ayrı branch + PR ile ilerler; her fazın sonunda canlı sitede kontrol edilip onay alınır.
 
 ## Alınan kararlar
@@ -81,7 +81,7 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 ### Faz 6 — Cilalama
 - [x] PWA: ana ekrana eklenebilir, internet olmadan da açılabilir (tablet için önemli); yeni sürümde "Yenile" bildirimi
 - [x] Performans (hızlı açılış, küçük dosya boyutu) ve erişilebilirlik denetimi: uygulamalar ihtiyaç anında yükleniyor (ilk açılış paketi 398 KB → 293 KB); axe-core ile WCAG 2.2 AA taraması tarayıcı testlerine eklendi, bulgular düzeltildi
-- [ ] Gerçek cihaz testleri: Windows PC, Android tablet, iPad, telefon ([kontrol listesi](cihaz-testi.md))
+- [x] Gerçek cihaz testleri: Windows PC, Android tablet, iPad, telefon ([kontrol listesi](cihaz-testi.md)); 2026-11-16, kullanıcı tarafından denendi, hata yok
 
 **Bitiş ölçütü:** Gerçek cihazlarda sorunsuz; denetimlerde ciddi bulgu yok.
 
