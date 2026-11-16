@@ -34,7 +34,7 @@ export function About() {
         <div>
           <h2>VirtualMOS</h2>
           <p>{t('about.desc')}</p>
-          <p className="about__dev">{t('about.dev')}</p>
+          <p className="about__version">{t('about.version', { version: __APP_VERSION__ })}</p>
         </div>
       </header>
 

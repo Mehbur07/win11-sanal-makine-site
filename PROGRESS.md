@@ -2,6 +2,20 @@
 
 ### [2026-11-16 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Faz 7 (`feature/phase-7-release`): sürüm 1.0.0. `package.json` sürümü `vite.config.ts` → `define` ile `__APP_VERSION__` olarak koda giriyor (tip: `src/env.d.ts`); "Hakkında"da "Sürüm 1.0.0" (`about.version`, eski `about.dev` kaldırıldı)
+  - README: "yapım aşamasında" notu yerine sürüm, ekran görüntüsü (`docs/ekran-goruntusu.jpg`, 1280×760) ve Özellikler listesi; CHANGELOG'da birikenler `[1.0.0] - 2026-11-16` altına taşındı
+  - m07-site (ayrı repo, henüz yüklenmedi): VirtualMOS kartı "Hazır Projeler"e taşındı (Siteye Git + Kaynak Kodu, logo `mehburos.jpg`, TR/EN), sayaç "9 hazır · 6 geliştiriliyor"
+  - Google Safe Browsing (şeffaflık raporu API'si): virtualmos.github.io için hiçbir uyarı işareti yok, durum "veri yok" (yeni site); SmartScreen kullanıcı tarafından Edge'de denenecek
+- **Son Commit:** 6bf4ad1 Merge pull request #11 from virtualmos/feature/phase-6-polish
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı onay verince main'e `v1.0.0` etiketi + GitHub Release; m07-site değişikliğinin yüklenmesi; SmartScreen sonucu gelince yol haritasındaki Faz 7 kutuları işaretlenir
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Faz 6 gerçek cihaz testleri hâlâ yapılmadı (`docs/cihaz-testi.md`)
+  - m07-site'ta kullanıcıya ait, git'e eklenmemiş `assets/img/projeler/` klasörü var; m07-site yüklenirken commit'e dahil edilmemeli. `assets/img/win11web.svg` artık kullanılmıyor (silmek onay ister)
+  - Repo açıklamasındaki "(yeniden yazılıyor)" ifadesi sürüm 1.0.0 ile kaldırıldı
+
+### [2026-11-16 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Faz 6 (`feature/phase-6-polish`): PWA — `public/manifest.webmanifest`, simgeler 192/512 + maskable (kaynak: `mehburos/assets/branding/mehburos-icon-512.png`). Ek kütüphane yok: `src/pwa/sw-template.js` + `vite-pwa-plugin.ts` derlemede `dist/sw.js` üretiyor (dosya listesi + içerikten hesaplanan sürüm); yalnızca aynı sitedeki ve listedeki dosyalar önbellekten, GitHub API ve dış siteler karışılmıyor
   - Güncelleme kendiliğinden uygulanmıyor: "Yeni sürüm hazır" bildirimi (yeni `sticky` + `action` seçenekleri) → Yenile → `skip-waiting` → sayfa yenilenir, eski önbellek silinir (elle doğrulandı)
   - Performans: uygulamalar `React.lazy` ile ihtiyaç anında yükleniyor (`registry.ts` → `load()`), pencere içi `AppBody.tsx` yükleniyor/yüklenemedi ekranı; ilk paket 398 → 293 KB (gzip 123 → 93 KB)

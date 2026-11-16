@@ -4,10 +4,18 @@
 
 MehburOS temalı, tarayıcıda çalışan sanal masaüstü. Kurulum gerektirmeden bilgisayarda, tablette ve telefonda açılır.
 
-🔗 **Adres:** https://virtualmos.github.io/
+🔗 **Adres:** https://virtualmos.github.io/ · 📦 **Sürüm:** 1.0.0 ([değişiklikler](CHANGELOG.md))
 
-> 🚧 **Durum:** Faz 6 (cilalama) sürüyor: site ana ekrana eklenebiliyor ve internetsiz açılıyor; performans ve erişilebilirlik denetimi tamam.
-> Gerçek cihaz testleri bekleniyor ([kontrol listesi](docs/cihaz-testi.md)). Plan için: [yol haritası](docs/yol-haritasi.md).
+![VirtualMOS masaüstü: Dosyalar ve Hakkında pencereleri açık](docs/ekran-goruntusu.jpg)
+
+## Özellikler
+
+- MehburOS'un neon camgöbeği–siyah temasında masaüstü: sürüklenip boyutlandırılabilen, kenara yaslanabilen pencereler, alt panel, aramalı uygulama menüsü, bildirimler, saat/takvim ve hızlı ayarlar
+- Dokunmatik dostu: tablette iki uygulama yan yana, telefonda uygulamalar tam ekran
+- Dosyalar cihazında gerçek bir klasöre kaydedilir (desteklemeyen tarayıcılarda tarayıcının bu cihazdaki alanına)
+- 10 uygulama: Dosyalar, Metin Düzenleyici, Hesap Makinesi, Çizim, Fotoğraflar, Terminal, Tarayıcı, Ayarlar, Hakkında ve MehburMC Launcher demosu
+- Ana ekrana eklenebilir, internet olmadan da açılır
+- Türkçe ve İngilizce, açık ve koyu tema
 
 ## Ana ekrana ekle, internetsiz kullan
 
@@ -59,14 +67,6 @@ Pencereler ve uygulamalar tamamen sitede çalışır; oluşturduğun dosyalar is
 | Ayarlar | Tema, vurgu rengi, duvar kâğıdı, dil ve dosyaların saklandığı yer |
 | MehburMC Launcher | Gerçek launcher'ın arayüzünü taklit eden demo: profiller, haberler, yenilikler. En güncel sürüm GitHub Releases'ten okunur, Windows/Linux için gerçek indirme bağlantıları verilir. **Oyna** düğmesi demo olduğunu söyler (tarayıcıdan Minecraft başlatılamaz) |
 
-## Neler olacak?
-
-- MehburOS'un neon camgöbeği–siyah temasında masaüstü: pencereler, alt panel, uygulama menüsü, bildirimler
-- Dokunmatik dostu arayüz: tablet modu (iki uygulama yan yana) ve telefon modu
-- Dosyaların cihazda gerçek bir klasöre kaydedilmesi (desteklemeyen tarayıcılarda tarayıcı depolaması)
-- Uygulamalar: Dosyalar, metin düzenleyici, hesap makinesi, çizim, fotoğraflar, terminal, tarayıcı, ayarlar ve MehburMC Launcher demosu
-- Türkçe ve İngilizce
-
 ## Geliştirme
 
 Gerekenler: [Node.js](https://nodejs.org/) 22 veya üstü ve [pnpm](https://pnpm.io/).
@@ -91,7 +91,7 @@ pnpm dev          # geliştirme sunucusu: http://localhost:5173
 
 ## Yayınlama
 
-Elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.github/workflows/ci.yml)):
+Sürüm numarası `package.json`'daki `version` alanından gelir ve **Hakkında** penceresinde görünür. Siteyi yayınlamak için elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.github/workflows/ci.yml)):
 
 - **Her PR'da:** lint, biçim, birim test, derleme ve tarayıcı testlerini çalıştırır.
 - **main'e merge edilince:** aynı kontrollerden geçerse siteyi GitHub Pages'e yayınlar.
@@ -123,6 +123,7 @@ Elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.git
 | `e2e/` | Tarayıcı testleri (Playwright); `a11y.spec.ts` erişilebilirlik taraması (axe-core), `pwa.spec.ts` internetsiz açılış |
 | `docs/yol-haritasi.md` | Kararlar ve fazlar |
 | `docs/cihaz-testi.md` | Gerçek cihazlarda elle deneme listesi |
+| `docs/ekran-goruntusu.jpg` | README'deki ekran görüntüsü |
 
 ## Kullanılan teknolojiler
 
