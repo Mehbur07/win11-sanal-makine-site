@@ -6,8 +6,22 @@ MehburOS temalı, tarayıcıda çalışan sanal masaüstü. Kurulum gerektirmede
 
 🔗 **Adres:** https://virtualmos.github.io/
 
-> 🚧 **Durum:** Faz 5 tamamlandı: masaüstü kabuğu, Dosyalar, temel uygulamalar (metin düzenleyici, hesap makinesi, çizim, fotoğraflar, terminal, tarayıcı, ayarlar) ve MehburMC Launcher demosu.
-> Sırada cilalama (çevrimdışı çalışma, performans, gerçek cihaz testleri) var. Plan için: [yol haritası](docs/yol-haritasi.md).
+> 🚧 **Durum:** Faz 6 (cilalama) sürüyor: site ana ekrana eklenebiliyor ve internetsiz açılıyor; performans ve erişilebilirlik denetimi tamam.
+> Gerçek cihaz testleri bekleniyor ([kontrol listesi](docs/cihaz-testi.md)). Plan için: [yol haritası](docs/yol-haritasi.md).
+
+## Ana ekrana ekle, internetsiz kullan
+
+VirtualMOS bir **PWA**'dır (kurulabilen web uygulaması). Siteyi bir kez açınca dosyaları cihaza önbelleğe alınır ve
+**"İnternetsiz kullanıma hazır"** bildirimi çıkar; bundan sonra internet olmadan da açılır.
+
+| Cihaz | Nasıl eklenir |
+|---|---|
+| Bilgisayar (Edge, Chrome) | Adres çubuğundaki **Uygulamayı yükle** simgesi |
+| Android (Chrome) | ⋮ menü → **Ana ekrana ekle** / **Uygulamayı yükle** |
+| iPad, iPhone (Safari) | Paylaş → **Ana Ekrana Ekle** |
+
+Yeni bir sürüm yayınlandığında **"Yeni sürüm hazır"** bildirimi çıkar; **Yenile**'ye basınca güncellenir (kendiliğinden yenilenmez, açık işlerin kaybolmasın diye).
+İnternetsizken Tarayıcı'daki siteler ve Launcher'daki sürüm bilgisi gelmez.
 
 ## Dosyalar nerede saklanır?
 
@@ -93,7 +107,9 @@ Elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.git
 | `src/shell/wm/` | Pencere yöneticisi: durum (`reducer.ts`), konum hesapları (`geometry.ts`), pencere bileşeni |
 | `src/shell/panel/` | Alt panel, uygulama menüsü, hızlı ayarlar, takvim |
 | `src/shell/notifications/` | Bildirimler ve köşede beliren bildirim kutuları |
-| `src/apps/` | Uygulamalar ve uygulama listesi (`registry.ts`) |
+| `src/apps/` | Uygulamalar ve uygulama listesi (`registry.ts`); her uygulamanın kodu ilk açıldığında indirilir |
+| `src/pwa/` | İnternetsiz açılış: service worker şablonu (`sw-template.js`) ve kaydı/güncelleme bildirimi (`usePwa.ts`) |
+| `vite-pwa-plugin.ts` | Derlemede `dist/sw.js` üretir: önbelleğe alınacak dosya listesi + sürüm |
 | `src/apps/files/` | Dosyalar uygulaması |
 | `src/apps/<uygulama>/` | Diğer uygulamalar: `editor`, `calculator`, `paint`, `photos`, `terminal`, `browser`, `settings`; ortak parçalar `shared/`, dosyayı uygun uygulamayla açma `openWith.ts` |
 | `src/apps/launcher/` | MehburMC Launcher demosu: sayfalar, sürüm bilgisi (`releases.ts`, GitHub Releases + 10 dk önbellek), profiller (`profiles.ts`), sürüm notu okuyucu (`notes.ts`) |
@@ -103,9 +119,10 @@ Elle bir şey yapmaya gerek yok. GitHub Actions ([.github/workflows/ci.yml](.git
 | `src/i18n/` | Türkçe/İngilizce metinler ve dil seçimi |
 | `src/styles/tokens.css` | Tema renkleri ve ölçüleri (MehburOS renkleri) |
 | `src/assets/wallpapers/` | Duvar kâğıtları (16:9 ve 4:3, WebP) |
-| `public/` | Olduğu gibi kopyalanan dosyalar: logo, 404 sayfası |
-| `e2e/` | Tarayıcı testleri (Playwright) |
+| `public/` | Olduğu gibi kopyalanan dosyalar: logo ve uygulama simgeleri, `manifest.webmanifest`, 404 sayfası |
+| `e2e/` | Tarayıcı testleri (Playwright); `a11y.spec.ts` erişilebilirlik taraması (axe-core), `pwa.spec.ts` internetsiz açılış |
 | `docs/yol-haritasi.md` | Kararlar ve fazlar |
+| `docs/cihaz-testi.md` | Gerçek cihazlarda elle deneme listesi |
 
 ## Kullanılan teknolojiler
 

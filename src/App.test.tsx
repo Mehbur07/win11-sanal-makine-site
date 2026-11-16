@@ -18,6 +18,13 @@ function renderDesktop() {
   });
 }
 
+// Uygulamalar ihtiyaç anında yüklenir (lazy); kodları gelip pencere dolana kadar bekle
+async function settle() {
+  await act(async () => {
+    await vi.dynamicImportSettled();
+  });
+}
+
 function openFromMenu(name: string) {
   fireEvent.click(screen.getByRole('button', { name: 'Uygulama menüsü' }));
   const menu = screen.getByRole('dialog', { name: 'Uygulama menüsü' });
@@ -49,12 +56,13 @@ describe('App', () => {
     expect(screen.queryByTestId('boot')).toBeNull();
     expect(screen.getByTestId('desktop')).toBeTruthy();
     expect(screen.getByText("VirtualMOS'a hoş geldin")).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Bildirimler (1 okunmamış)' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Bildirimler: 1 okunmamış' })).toBeTruthy();
   });
 
-  it('menüden uygulama açar, panelde görünür ve kapatılır', () => {
+  it('menüden uygulama açar, panelde görünür ve kapatılır', async () => {
     renderDesktop();
     openFromMenu('Hakkında');
+    await settle();
 
     const win = screen.getByRole('dialog', { name: 'Hakkında' });
     expect(within(win).getByText('Klavye kısayolları')).toBeTruthy();
@@ -64,7 +72,7 @@ describe('App', () => {
     expect(screen.queryByRole('dialog', { name: 'Hakkında' })).toBeNull();
   });
 
-  it('menüde arama sonuçları süzer, Enter ilk sonucu açar', () => {
+  it('menüde arama sonuçları süzer, Enter ilk sonucu açar', async () => {
     renderDesktop();
     fireEvent.click(screen.getByRole('button', { name: 'Uygulama menüsü' }));
     const input = screen.getByRole('searchbox', { name: 'Uygulama ara' });
@@ -74,6 +82,7 @@ describe('App', () => {
     expect(within(menu).queryByRole('button', { name: 'Dosyalar' })).toBeNull();
 
     fireEvent.keyDown(input, { key: 'Enter' });
+    await settle();
     expect(screen.getByTestId('calc-display').textContent).toBe('0');
   });
 

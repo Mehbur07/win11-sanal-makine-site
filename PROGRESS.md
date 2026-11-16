@@ -2,6 +2,23 @@
 
 ### [2026-11-16 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Faz 6 (`feature/phase-6-polish`): PWA — `public/manifest.webmanifest`, simgeler 192/512 + maskable (kaynak: `mehburos/assets/branding/mehburos-icon-512.png`). Ek kütüphane yok: `src/pwa/sw-template.js` + `vite-pwa-plugin.ts` derlemede `dist/sw.js` üretiyor (dosya listesi + içerikten hesaplanan sürüm); yalnızca aynı sitedeki ve listedeki dosyalar önbellekten, GitHub API ve dış siteler karışılmıyor
+  - Güncelleme kendiliğinden uygulanmıyor: "Yeni sürüm hazır" bildirimi (yeni `sticky` + `action` seçenekleri) → Yenile → `skip-waiting` → sayfa yenilenir, eski önbellek silinir (elle doğrulandı)
+  - Performans: uygulamalar `React.lazy` ile ihtiyaç anında yükleniyor (`registry.ts` → `load()`), pencere içi `AppBody.tsx` yükleniyor/yüklenemedi ekranı; ilk paket 398 → 293 KB (gzip 123 → 93 KB)
+  - Erişilebilirlik: `@axe-core/playwright` (yalnızca test) ile WCAG 2.2 AA taraması `e2e/a11y.spec.ts`; düzeltilen bulgular: saat ve bildirim düğmesi adları (parantez kullanılmıyor, axe parantez içini yok sayıyor), CE tuşu adı, başlangıç sayfasında href'siz bağlantı → devre dışı düğme
+  - Playwright'ta service worker varsayılan kapalı (`serviceWorkers: 'block'`), yalnızca `e2e/pwa.spec.ts` açıyor; testler: 108 birim, Playwright 97 geçti / 32 cihaza özel atlandı
+- **Son Commit:** e6ff159 Merge pull request #10 from virtualmos/feature/phase-5-launcher
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı gerçek cihazlarda `docs/cihaz-testi.md` listesini dener; bulgular düzeltilince yol haritasındaki son Faz 6 kutusu işaretlenir. Faz 7, kullanıcı "başla" deyince
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Gerçek cihaz testleri yapılmadı (özellikle iPad Safari'de ana ekrana ekleme ve internetsiz açılış)
+  - Güncelleme akışının otomatik testi yok (iki ayrı derleme gerektiriyor); elle doğrulandı
+  - Uygulama kodu yüklenemezse (internetsiz ve önbellek yokken) pencerede "Sayfayı yenile" çıkıyor; aynı pencerede tekrar deneme yok
+  - `ComingSoon` bileşeni hâlâ kullanılmıyor; `pnpm audit` / Dependabot: minimatch (yalnızca ESLint içinde) orta seviye
+  - Kullanıcı "başla" demeden bir sonraki faza geçilmeyecek
+
+### [2026-11-16 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Faz 4 (`feature/phase-4-apps`, PR #9 merge edildi): Metin Düzenleyici, Hesap Makinesi, Çizim, Fotoğraflar, Terminal, Tarayıcı, Ayarlar (depolama konumu dahil). CI'da çıkan iki hata düzeltildi: Terminal artık meşgulken basılan Enter'ı düşürmüyor, komutlar sıraya giriyor; Dosyalar testindeki belirsiz seçici konum çubuğuna daraltıldı. Tablette Kapat düğmesi köşe tutamağının üstüne alındı
   - Faz 5 (`feature/phase-5-launcher`): MehburMC Launcher demosu `src/apps/launcher/`; gerçek launcher'ın menü sırası ve renkleri (`.mmc` altında, her zaman koyu, vurgu #00f0ff). Demo sayfaları: Ana sayfa, Profiller, Hesaplar, Launcher'ı edin, Yenilikler; diğerleri kilitli
   - Sürüm bilgisi `Mehbur07/MehburMC-Launcher` GitHub Releases API'sinden; localStorage önbelleği 10 dk (`vmos:mmc:releases`), hata olursa eski önbellek, o da yoksa releases sayfasına bağlantı. Windows `_x64-setup.exe` normal sürümde, Linux `_amd64.deb` ayrı `-linux` sürümünde; yalnızca `https://github.com/` bağlantıları kabul ediliyor

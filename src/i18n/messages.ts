@@ -17,13 +17,23 @@ export const tr = {
   'app.browser': 'Tarayıcı',
   'app.settings': 'Ayarlar',
   'app.mehburmc': 'MehburMC Launcher',
+  'app.loading': 'Uygulama yükleniyor',
+  'app.loadFailed': 'Uygulama yüklenemedi. İnternet bağlantını kontrol edip sayfayı yenile.',
+  'app.reload': 'Sayfayı yenile',
+
+  // Çevrimdışı çalışma ve güncelleme (PWA)
+  'pwa.offlineReady.title': 'İnternetsiz kullanıma hazır',
+  'pwa.offlineReady.body': 'VirtualMOS artık internet olmadan da açılabilir.',
+  'pwa.update.title': 'Yeni sürüm hazır',
+  'pwa.update.body': 'Güncellemek için yenile. Kaydedilmemiş işlerini önce kaydet.',
+  'pwa.update.action': 'Yenile',
 
   // Panel
   'panel.label': 'Panel',
   'panel.running': 'açık',
   'panel.windows': '{count} pencere',
   'panel.notifications': 'Bildirimler',
-  'panel.notificationsUnread': 'Bildirimler ({count} okunmamış)',
+  'panel.notificationsUnread': 'Bildirimler: {count} okunmamış',
   'panel.quickSettings': 'Hızlı ayarlar',
   'panel.clock': 'Saat ve takvim',
 
@@ -384,12 +394,22 @@ export const en: Messages = {
   'app.browser': 'Browser',
   'app.settings': 'Settings',
   'app.mehburmc': 'MehburMC Launcher',
+  'app.loading': 'Loading app',
+  'app.loadFailed':
+    'The app could not be loaded. Check your internet connection and reload the page.',
+  'app.reload': 'Reload page',
+
+  'pwa.offlineReady.title': 'Ready to use offline',
+  'pwa.offlineReady.body': 'VirtualMOS can now open without an internet connection.',
+  'pwa.update.title': 'New version ready',
+  'pwa.update.body': 'Reload to update. Save any unsaved work first.',
+  'pwa.update.action': 'Reload',
 
   'panel.label': 'Panel',
   'panel.running': 'open',
   'panel.windows': '{count} windows',
   'panel.notifications': 'Notifications',
-  'panel.notificationsUnread': 'Notifications ({count} unread)',
+  'panel.notificationsUnread': 'Notifications: {count} unread',
   'panel.quickSettings': 'Quick settings',
   'panel.clock': 'Clock and calendar',
 

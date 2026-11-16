@@ -21,6 +21,11 @@ export function NotificationItem({
           <time dateTime={item.time.toISOString()}>{time}</time>
         </header>
         {item.bodyKey && <p>{t(item.bodyKey, item.vars)}</p>}
+        {item.action && (
+          <button type="button" className="btn primary notif__action" onClick={item.action.run}>
+            {t(item.action.labelKey)}
+          </button>
+        )}
       </div>
       <button
         type="button"
