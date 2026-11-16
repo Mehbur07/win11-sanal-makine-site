@@ -8,10 +8,10 @@
   - Google Safe Browsing (şeffaflık raporu API'si): virtualmos.github.io için hiçbir uyarı işareti yok, durum "veri yok" (yeni site); SmartScreen kullanıcı tarafından Edge'de denenecek
 - **Son Commit:** 6bf4ad1 Merge pull request #11 from virtualmos/feature/phase-6-polish
 - **Aktif Branch:** main
-- **Sıradaki İlk İş (Next Action):** Kullanıcı onay verince main'e `v1.0.0` etiketi + GitHub Release; m07-site değişikliğinin yüklenmesi; SmartScreen sonucu gelince yol haritasındaki Faz 7 kutuları işaretlenir
+- **Sıradaki İlk İş (Next Action):** Faz 7 tamamlandı: `v1.0.0` etiketi + GitHub Release atıldı, m07-site kartı yayında (m07-site PR #31), Edge SmartScreen uyarı vermedi. Sırada Faz 6 gerçek cihaz testleri; bulgular 1.0.x olarak düzeltilir
 - **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
   - Faz 6 gerçek cihaz testleri hâlâ yapılmadı (`docs/cihaz-testi.md`)
-  - m07-site'ta kullanıcıya ait, git'e eklenmemiş `assets/img/projeler/` klasörü var; m07-site yüklenirken commit'e dahil edilmemeli. `assets/img/win11web.svg` artık kullanılmıyor (silmek onay ister)
+  - m07-site'ta `assets/img/win11web.svg` artık kullanılmıyor (silmek onay ister); kullanıcının `assets/img/projeler/` klasörüne dokunulmadı
   - Repo açıklamasındaki "(yeniden yazılıyor)" ifadesi sürüm 1.0.0 ile kaldırıldı
 
 ### [2026-11-16 - Mehbur07]
