@@ -2,21 +2,27 @@ import { createContext, useContext } from 'react';
 import type { MessageVars } from '../../i18n/context.ts';
 import type { MessageKey } from '../../i18n/messages.ts';
 
-// Bildirimler metin anahtarıyla saklanır; dil değişince bildirimler de yeni dilde görünür
-export interface AppNotification {
-  id: number;
-  titleKey: MessageKey;
-  bodyKey?: MessageKey;
-  /** Metinlerdeki {isim} yer tutucularının değerleri */
-  vars?: MessageVars;
-  time: Date;
-  read: boolean;
+/** Bildirimdeki düğme (ör. "Yenile") */
+export interface NotifyAction {
+  labelKey: MessageKey;
+  run: () => void;
 }
 
 export interface NotifyInput {
   titleKey: MessageKey;
   bodyKey?: MessageKey;
+  /** Metinlerdeki {isim} yer tutucularının değerleri */
   vars?: MessageVars;
+  action?: NotifyAction;
+  /** true ise köşedeki bildirim kendiliğinden kaybolmaz, kullanıcı kapatana kadar kalır */
+  sticky?: boolean;
+}
+
+// Bildirimler metin anahtarıyla saklanır; dil değişince bildirimler de yeni dilde görünür
+export interface AppNotification extends NotifyInput {
+  id: number;
+  time: Date;
+  read: boolean;
 }
 
 export interface NotificationsValue {

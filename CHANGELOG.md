@@ -6,6 +6,8 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yapısına uyar.
 ## [Unreleased]
 
 ### Eklendi
+- Site artık ana ekrana / masaüstüne eklenebiliyor ve bir kez açıldıktan sonra internet olmadan da çalışıyor. Yeni sürüm çıkınca "Yeni sürüm hazır" bildirimi ve Yenile düğmesi görünüyor.
+- Uygulamalar ihtiyaç anında yükleniyor; site daha hızlı açılıyor. Ekran okuyucu ve sesli komut kullanıcıları için düğme adları düzeltildi (saat, bildirimler, hesap makinesi), erişilebilirlik taraması otomatik testlere eklendi.
 - MehburMC Launcher demosu: gerçek launcher'ın görünümünde profiller, haberler ve yenilikler sayfaları. En güncel sürüm GitHub'dan okunuyor ve Windows/Linux için gerçek indirme bağlantıları veriliyor; "Oyna" düğmesi bunun bir demo olduğunu söylüyor.
 - Temel uygulamalar eklendi: Metin Düzenleyici, Hesap Makinesi, Çizim, Fotoğraflar, MehburOS komutlu Terminal, Tarayıcı ve Ayarlar (tema, vurgu rengi, duvar kâğıdı, dil, dosyaların saklandığı yer). Dosyalar'da çift tıklanan dosya uygun uygulamada açılıyor.
 - Dosyalar uygulaması: klasörler arasında gezinme, yeni klasör ve metin dosyası, kopyala/kes/yapıştır, yeniden adlandırma, Çöp Kutusu'ndan geri yükleme, cihazdan dosya/klasör ekleme (sürükle-bırak dahil), indirme ve resim/metin önizleme.

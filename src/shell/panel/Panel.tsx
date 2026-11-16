@@ -81,6 +81,8 @@ export function Panel({
           onClick={() => onToggle('notifications')}
         >
           <Bell aria-hidden="true" />
+          {/* Görünen sayı adın içinde de geçer ("Bildirimler: 1 okunmamış"); parantez kullanılmaz,
+              çünkü ekran okuyucu araçları parantez içini adın parçası saymayabilir */}
           {unread > 0 && <span className="panel__badge">{unread}</span>}
         </button>
         <button
@@ -95,12 +97,13 @@ export function Panel({
         <button
           type="button"
           className="panel__clock"
-          aria-label={t('panel.clock')}
           aria-expanded={open === 'calendar'}
           onClick={() => onToggle('calendar')}
         >
+          {/* Ekran okuyucu görünen saati de okusun (WCAG 2.5.3: görünen metin adın içinde olmalı) */}
           <span>{now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })}</span>
           {!phone && <small>{now.toLocaleDateString(locale)}</small>}
+          <span className="visually-hidden">{t('panel.clock')}</span>
         </button>
       </div>
     </nav>

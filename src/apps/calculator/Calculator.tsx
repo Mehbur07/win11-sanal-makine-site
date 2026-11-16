@@ -24,7 +24,13 @@ export function Calculator() {
 
   const keys: Key[] = [
     { label: '%', action: { type: 'percent' }, kind: 'fn' },
-    { label: 'CE', aria: t('calc.clearEntry'), action: { type: 'clearEntry' }, kind: 'fn' },
+    // Ad görünen "CE" ile başlar: sesle komut veren kullanıcı "CE" diyerek de basabilsin
+    {
+      label: 'CE',
+      aria: `CE, ${t('calc.clearEntry')}`,
+      action: { type: 'clearEntry' },
+      kind: 'fn',
+    },
     { label: 'C', aria: t('calc.clear'), action: { type: 'clear' }, kind: 'fn' },
     {
       label: <Delete aria-hidden="true" />,

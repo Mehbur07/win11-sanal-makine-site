@@ -26,10 +26,12 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
       const id = nextId.current++;
       setItems((list) => [{ id, ...input, time: new Date(), read: false }, ...list]);
       setToastIds((ids) => [id, ...ids].slice(0, 3));
-      timers.current.set(
-        id,
-        window.setTimeout(() => hideToast(id), TOAST_MS),
-      );
+      if (!input.sticky) {
+        timers.current.set(
+          id,
+          window.setTimeout(() => hideToast(id), TOAST_MS),
+        );
+      }
     },
     [hideToast],
   );

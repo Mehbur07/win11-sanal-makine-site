@@ -9,11 +9,6 @@
   text-decoration: none;
 }
 
-.browser__bar a.tool[aria-disabled='true'] {
-  opacity: 0.4;
-  pointer-events: none;
-}
-
 .browser__address {
   flex: 1;
   min-width: 120px;

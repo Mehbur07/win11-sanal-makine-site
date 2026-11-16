@@ -8,6 +8,7 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react';
 import { useI18n } from '../i18n/context.ts';
+import { usePwa } from '../pwa/usePwa.ts';
 import { useTheme } from '../settings/theme.ts';
 import { StorageGate } from '../storage/StorageGate.tsx';
 import { StorageProvider } from '../storage/StorageProvider.tsx';
@@ -48,6 +49,7 @@ function DesktopShell({ onRestart }: { onRestart: () => void }) {
   const { t } = useI18n();
   const wm = useWM();
   const { notify } = useNotifications();
+  usePwa();
   const fullscreen = useFullscreen();
   const { wallpaper, customWallpaperUrl } = useTheme();
   const [popover, setPopover] = useState<PanelPopover | null>(null);

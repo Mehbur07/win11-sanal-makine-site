@@ -13,6 +13,9 @@ export default defineConfig({
     baseURL: `http://localhost:${PORT}`,
     browserName: 'chromium',
     trace: 'retain-on-failure',
+    // Service worker testlerde kapalı: page.route ile yapılan sahte cevaplar araya girmesin.
+    // Çevrimdışı çalışma kendi testinde (e2e/pwa.spec.ts) açılarak denenir.
+    serviceWorkers: 'block',
   },
   projects: [
     { name: 'pc', use: { viewport: { width: 1366, height: 768 } } },

@@ -110,17 +110,29 @@ export function Browser() {
             onFocus={(e) => e.target.select()}
           />
         </form>
-        <a
-          className="tool"
-          href={url === HOME ? undefined : url}
-          aria-disabled={url === HOME}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t('browser.external')}
-          title={t('browser.external')}
-        >
-          <ExternalLink aria-hidden="true" />
-        </a>
+        {url === HOME ? (
+          // Başlangıç sayfasında dışarıda açılacak bir adres yok: devre dışı düğme
+          <button
+            type="button"
+            className="tool"
+            disabled
+            aria-label={t('browser.external')}
+            title={t('browser.external')}
+          >
+            <ExternalLink aria-hidden="true" />
+          </button>
+        ) : (
+          <a
+            className="tool"
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t('browser.external')}
+            title={t('browser.external')}
+          >
+            <ExternalLink aria-hidden="true" />
+          </a>
+        )}
       </div>
 
       {!hintClosed && url !== HOME && (

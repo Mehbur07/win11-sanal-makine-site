@@ -4,6 +4,7 @@ import { AppIcon } from '../../apps/AppIcon.tsx';
 import { APPS } from '../../apps/registry.ts';
 import { useI18n } from '../../i18n/context.ts';
 import { ConfirmDialog } from '../dialog/ConfirmDialog.tsx';
+import { AppBody } from './AppBody.tsx';
 import { METRICS } from '../device.ts';
 import { useWM } from './context.ts';
 import {
@@ -41,7 +42,6 @@ export function Window({ win }: { win: WinState }) {
   const wm = useWM();
   const { t } = useI18n();
   const app = APPS[win.appId];
-  const Body = app.component;
   const appTitle = t(app.titleKey);
   const title = `${win.dirty ? '• ' : ''}${win.title ? `${win.title} — ${appTitle}` : appTitle}`;
   const { titleH } = METRICS[wm.mode];
@@ -204,7 +204,7 @@ export function Window({ win }: { win: WinState }) {
       </div>
 
       <div className="window__body">
-        <Body windowId={win.id} appId={win.appId} args={win.args} />
+        <AppBody windowId={win.id} appId={win.appId} args={win.args} />
         {win.confirmClose && (
           <ConfirmDialog
             title={t('window.unsaved.title')}
