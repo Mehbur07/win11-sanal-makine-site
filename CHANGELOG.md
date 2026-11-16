@@ -5,7 +5,12 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yapısına uyar.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-16
+
+VirtualMOS'un ilk tam sürümü: MehburOS temasıyla baştan yazılan sanal masaüstü https://virtualmos.github.io/ adresinde yayında.
+
 ### Eklendi
+- "Hakkında" penceresinde sürüm numarası gösteriliyor; README'ye ekran görüntüsü ve özellik listesi eklendi.
 - Site artık ana ekrana / masaüstüne eklenebiliyor ve bir kez açıldıktan sonra internet olmadan da çalışıyor. Yeni sürüm çıkınca "Yeni sürüm hazır" bildirimi ve Yenile düğmesi görünüyor.
 - Uygulamalar ihtiyaç anında yükleniyor; site daha hızlı açılıyor. Ekran okuyucu ve sesli komut kullanıcıları için düğme adları düzeltildi (saat, bildirimler, hesap makinesi), erişilebilirlik taraması otomatik testlere eklendi.
 - MehburMC Launcher demosu: gerçek launcher'ın görünümünde profiller, haberler ve yenilikler sayfaları. En güncel sürüm GitHub'dan okunuyor ve Windows/Linux için gerçek indirme bağlantıları veriliyor; "Oyna" düğmesi bunun bir demo olduğunu söylüyor.
@@ -37,5 +42,6 @@ Win11 Web'in son hali. Kod `v0.1.0-win11` etiketinde saklanıyor.
 - Sürüklenip boyutlandırılabilen pencereler ve yedi uygulama: Dosya Gezgini, Not Defteri, Hesap Makinesi, Paint, Web Tarayıcı, Terminal, Ayarlar.
 - Dosyaların ve ayarların tarayıcıda saklanması; GitHub Pages ile yayınlama.
 
-[Unreleased]: https://github.com/virtualmos/virtualmos.github.io/compare/v0.1.0-win11...HEAD
+[Unreleased]: https://github.com/virtualmos/virtualmos.github.io/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/virtualmos/virtualmos.github.io/compare/v0.1.0-win11...v1.0.0
 [0.1.0-win11]: https://github.com/virtualmos/virtualmos.github.io/releases/tag/v0.1.0-win11

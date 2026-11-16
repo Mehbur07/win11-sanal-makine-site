@@ -3,7 +3,7 @@
 **VirtualMOS** (Virtual MehburOS), MehburOS'un tarayıcıda çalışan sanal masaüstüdür.
 Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazılacak.
 
-> Durum: **Faz 6 sürüyor.** PWA, performans ve erişilebilirlik tamam; gerçek cihaz testleri kullanıcıda ([kontrol listesi](cihaz-testi.md)). Faz 7, kullanıcı "başla" dediğinde başlar.
+> Durum: **Faz 7 (yayın) sürüyor.** Sürüm 1.0.0 hazırlandı, m07-site kartı "Hazır Projeler"e taşındı; `v1.0.0` etiketi merge sonrası atılacak. Faz 6'daki gerçek cihaz testleri kullanıcıda ([kontrol listesi](cihaz-testi.md)).
 > Her faz ayrı branch + PR ile ilerler; her fazın sonunda canlı sitede kontrol edilip onay alınır.
 
 ## Alınan kararlar
@@ -86,9 +86,9 @@ Win11 Web projesi bu adla, Windows'a benzemeyen kendi kimliğiyle baştan yazıl
 **Bitiş ölçütü:** Gerçek cihazlarda sorunsuz; denetimlerde ciddi bulgu yok.
 
 ### Faz 7 — Yayın (v1.0.0)
-- [ ] README (TR), CHANGELOG, `v1.0.0` etiketi
-- [ ] m07-site kartı "Hazır Projeler"e döner: **Siteye Git** + **Kaynak Kodu**
-- [ ] Edge'de SmartScreen ve Google Safe Browsing kontrolü
+- [ ] README (TR), CHANGELOG, `v1.0.0` etiketi (README ve CHANGELOG hazır, sürüm 1.0.0 "Hakkında"da görünüyor; etiket merge sonrası)
+- [ ] m07-site kartı "Hazır Projeler"e döner: **Siteye Git** + **Kaynak Kodu** (kart hazır, m07-site'a yüklenmesi bekleniyor)
+- [ ] Edge'de SmartScreen ve Google Safe Browsing kontrolü (Google Safe Browsing 2026-11-16: hiçbir uyarı işareti yok, site yeni olduğu için henüz "veri yok" durumunda; SmartScreen Edge'de elle denenecek)
 
 ## Açık sorular
 Şu an açık soru yok (Faz 0 öncesi sorular cevaplandı, kararlar yukarıdaki tabloda).

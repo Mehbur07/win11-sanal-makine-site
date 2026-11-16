@@ -85,7 +85,7 @@ export const tr = {
 
   // Hakkında
   'about.desc': 'MehburOS temalı, tarayıcıda çalışan sanal masaüstü.',
-  'about.dev': 'Geliştirme sürümü — uygulamalar fazlar hâlinde ekleniyor.',
+  'about.version': 'Sürüm {version}',
   'about.keyboard': 'Klavye kısayolları',
   'about.touch': 'Dokunmatik ekranda',
   'about.links': 'Bağlantılar',
@@ -453,7 +453,7 @@ export const en: Messages = {
   'comingSoon.body': 'This app arrives in phase {phase} of the roadmap.',
 
   'about.desc': 'A MehburOS-themed virtual desktop that runs in your browser.',
-  'about.dev': 'Development build — apps are being added phase by phase.',
+  'about.version': 'Version {version}',
   'about.keyboard': 'Keyboard shortcuts',
   'about.touch': 'On a touch screen',
   'about.links': 'Links',

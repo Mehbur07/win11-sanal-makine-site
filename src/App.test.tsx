@@ -66,6 +66,7 @@ describe('App', () => {
 
     const win = screen.getByRole('dialog', { name: 'Hakkında' });
     expect(within(win).getByText('Klavye kısayolları')).toBeTruthy();
+    expect(within(win).getByText(/^Sürüm \d+\.\d+\.\d+$/)).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Hakkında — açık' })).toBeTruthy();
 
     fireEvent.click(within(win).getByRole('button', { name: 'Kapat' }));
